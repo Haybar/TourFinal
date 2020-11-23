@@ -3,8 +3,7 @@
   <head>
     <title>Bootstrap</title>
     <meta charset="utf-8">
-    <meta name="desc
-    ription" content="bootstrap">
+    <meta name="description" content="bootstrap">
     <meta name="keywords" content="bootstrap, CSS, HTML5, Javascript">
     <meta name="author" content="DESARROLLADOR">
 
@@ -13,7 +12,7 @@
 </head>
 <body>
 <div class="container">
-  <h1>Bootstrap</h1>
+  
   <div class="row">
     <div class="col-md-12">
       <div class="card">
@@ -28,21 +27,23 @@
           $email=$_POST['email'];
           $password=$_POST['password'];
           
-          //$sql= "INSERT INTO Usuario SET nombres='$nombres', primerApellido='$apellidoPaterno', segundoApellido='$apellidoMaterno', email='$email', password='$password';";//
+          //$sql= "INSERT INTO 'Usuario' SET nombres='$nombres', primerApellido='$apellidoPaterno', segundoApellido='$apellidoMaterno', email='$email', password='$password';";
           $sql = "INSERT INTO Usuario (nombres, primerApellido, segundoApellido, email, password) VALUES ('$nombres', '$apellidoPaterno', '$apellidoMaterno', '$email', '$password');";
           if($mysqli->query($sql))
             {
-              //echo "Registrado";
-              header ("Location: Public/index.html");
+              echo '<script>';
+                    echo 'alert("Registrado con exito!!");';
+                    echo 'window.location.href="Public/index.html";';
+                echo '</script>';
             }
             else
               {
-              echo "No Registrado";
+              //echo "No Registrado";
+              echo '<script>';
+                    echo 'alert("NO Registrado!!");';
+                echo '</script>';
             }
           ?>
- 
-
-
           
         </div>
       </div>
