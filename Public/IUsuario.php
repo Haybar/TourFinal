@@ -1,4 +1,6 @@
-<?php include("config.php"); ?>
+<?php include("config.php"); 
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -47,15 +49,20 @@
 			<ul class="main-menu">
 				<li><a href="index.html" class="active">Inicio</a></li>
 				<li><a href="index.html">Acerca de nosotros</a></li>
-				<li><a href="#">Atractivos</a>	
+				<li><a href="#">Lugares</a>	
 					<ul class="sub-menu">
-						<li><a href="provincias.html">Provincias</a></li>
-						<li><a href="index.html">Gastronomia</a></li>
-						<li><a href="index.html">Folklore</a></li>
+						<li><a href="provincias.html">Balnearios</a></li>
+						<li><a href="index.html">Centros Culturales</a></li>
+						<li><a href="index.html">Cines/Teatros</a></li>
+						<li><a href="index.html">Plazas</a></li>
+						<li><a href="index.html">Parques</a></li>
+						<li><a href="provincias.html">Iglesias</a></li>
+						<li><a href="index.html">Museos</a></li>
+						<li><a href="experiencias.html">Restaurantes</a></li>
+						<li><a href="galeria.html">Universidades</a></li>
+						<li><a href="galeria.html">Instituciones</a></li>
 					</ul>
 				</li>
-				<li><a href="experiencias.html">Experiencias</a></li>
-				<li><a href="galeria.html">Galeria</a></li>
 				<li><a href="#"><i class="fas fa-language"></i> Idiomas</a>	
 					<ul class="sub-menu">
 						<li><a href="#">Español</a></li>
@@ -78,7 +85,7 @@
 	<section class="help-section-text spad">
 		<div class="container">
 			<div class="text-center text-white mb-5 pb-4">
-				<h2>Bienvenido</h2>
+				<h2>Bienvenido <?php echo $_SESSION['nombres'];?></h2>
 			</div>
 			<div class="row">
 				<div class="col-md-12">
@@ -151,6 +158,7 @@
 			<a href="index.html" class="footer-logo">
 				<img src="img/logoBC.png" alt="">
 			</a>
+			<!-- 
 			<div class="row">
 				<div class="col-lg-3 col-sm-6">
 					<div class="footer-widget">
@@ -203,6 +211,7 @@
 					</div>
 				</div>
 			</div>
+			-->
 			<div class="social-links">
 				<a href="#"><i class="fab fa-facebook-f"></i></a>
 				<a href="#"><i class="fab fa-instagram"></i></a>

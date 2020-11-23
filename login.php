@@ -22,7 +22,7 @@ if (isset($_POST["ingresar"])) {
                 {
                     echo '<script>';
                         echo 'alert("Bienvenido!!");';
-                        echo 'window.location.href="Private/dashboard.html";';
+                        echo 'window.location.href="Private/home.html";';
                     echo '</script>';
                 } 
             }                         
@@ -31,7 +31,7 @@ if (isset($_POST["ingresar"])) {
         {
             echo '<script>';
                 echo 'alert("Usuario y/o Contraseña invalidos");';
-                echo 'window.location.href="index.html";';
+                echo 'window.location.href="login.html";';
             echo '</script>';
         }
 } 

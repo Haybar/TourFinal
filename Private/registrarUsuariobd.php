@@ -41,6 +41,7 @@
               //echo "No Registrado";
               echo '<script>';
                     echo 'alert("NO Registrado!!");';
+                    echo 'window.location.href="login.html";';
                 echo '</script>';
             }
           ?>

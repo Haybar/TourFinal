@@ -24,7 +24,7 @@
   </head>
   <body class="app sidebar-mini">
     <!-- Navbar-->
-    <header class="app-header"><a class="app-header__logo" href="index.html">Vali</a>
+    <header class="app-header"><a class="app-header__logo" href="home.html"><img src="images/logoBC.png"></a>
       <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
       <!-- Navbar Right Menu-->
       <ul class="app-nav">
@@ -60,7 +60,7 @@
         </li>
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-list"></i><span class="app-menu__label">Control de Lugares</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
-            <li><a class="treeview-item" href="#"><i class="icon fa fa-location-arrow"></i></i> Lugares </a></li>
+            <li><a class="treeview-item" href="Lugares.html"><i class="icon fa fa-location-arrow"></i></i> Registro Lugares </a></li>
           </ul>
         </li>
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-list"></i></i><span class="app-menu__label">Atractivo Turistico</span><i class="treeview-indicator fa fa-angle-right"></i></a>
@@ -85,56 +85,83 @@
     <main class="app-content">
       <div class="app-title">
         <div>
-          <h1><i class="fa fa-edit"></i> Parques</h1>
+          <h1><i class="fa fa-edit"></i> Lugares</h1>
           <p>Registro</p>
         </div>
         <ul class="app-breadcrumb breadcrumb">
           <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
           <li class="breadcrumb-item">registro</li>
-          <li class="breadcrumb-item"><a href="#">Parque</a></li>
+          <li class="breadcrumb-item"><a href="#">Lugar</a></li>
         </ul>
       </div>
       <div class="row">
         <div class="col-md-8">
           <div class="tile">
-            <h3 class="tile-title">Registrar Parque</h3>
             <div class="tile-body">
-              <form class="for-balneario">
+              <form class="for-balneario" action="registrarLugarbd.php">
                 <div class="form-group">
-                  <label class="control-label">Nombre Parque</label>
-                  <input class="form-control" type="text" placeholder="Ingrese el nombre del Parque">
+                  <label class="control-label">Nombre del Lugar</label>
+                  <input class="form-control" name="nombreLugar" type="text" placeholder="Ingrese el nombre del Lugar">
                 </div>
                 <div class="form-group">
                   <label class="control-label">Descripción</label>
-                  <input class="form-control" type="text" placeholder="Ingrese una corta Descripción">
+                  <input class="form-control" name="descripcion" type="text" placeholder="Ingrese una corta Descripción">
                 </div>
                 <div class="form-group">
                   <label class="control-label">Dirección</label>
-                  <input class="form-control" type="text" placeholder="Ingrese La Dirección">
+                  <input class="form-control" name="direccion" type="text" placeholder="Ingrese La Dirección">
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="control-label">Horario</label>
+                      <input class="form-control" name="horarioAtencion" type="text" placeholder="Ingrese el Horario">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="control-label">Precio Entrada</label>
+                      <input class="form-control" name="entrada" type="text" placeholder="Ingrese el Horario">
+                    </div>
+                  </div>                  
                 </div>
                 <div class="form-group">
-                  <label class="control-label">Horario</label>
-                  <input class="form-control" type="text" placeholder="Ingrese el Horario">
+                  <label class="control-label">Foto</label>
+                  <input class="form-control" name="foto" type="file">
+                </div>                
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="exampleSelect1">Estado</label>
+                      <select class="form-control" id="exampleSelect1">
+                        <option>Activo</option>
+                        <option>Inactivo</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="exampleSelect1">Categoria</label>
+                      <select class="form-control" id="exampleSelect1">
+                        <option>Activo</option>
+                        <option>Inactivo</option>
+                      </select>
+                    </div>
+                  </div>
                 </div>
-                <div class="form-group">
-                  <label for="exampleSelect1">Estado</label>
-                  <select class="form-control" id="exampleSelect1">
-                    <option>Activo</option>
-                    <option>Inactivo</option>
-                  </select>
-                </div>
+                  
                 <div class="form-group">
                   <label class="control-label">Mapa</label>
                   <br>
-                  <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d30458.427377620897!2d-66.1459570801025!3d-17.39722040005723!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2sbo!4v1605640227160!5m2!1ses!2sbo" width="770" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d30458.427377620897!2d-66.1459570801025!3d-17.39722040005723!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2sbo!4v1605640227160!5m2!1ses!2sbo" width="100%" height="350" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
                   <div class="row">
                     <div class="col-md-6">
                       <label class="control-label">Latitud</label>
-                      <input class="form-control" type="text" placeholder="Ingrese la Latitud">
+                      <input class="form-control" name="latitud" type="text" placeholder="Ingrese la Latitud">
                     </div>
                     <div class="col-md-6">
                       <label class="control-label">Logitud</label>
-                      <input class="form-control" type="text" placeholder="Ingrese la Logitud">
+                      <input class="form-control" name="longitud" type="text" placeholder="Ingrese la Logitud">
                     </div>
                   </div>                  
                 </div>
@@ -143,11 +170,7 @@
                   <textarea class="form-control" id="exampleTextarea" rows="5"></textarea>
                 </div>
                 <div class="form-group">
-                </div>
-                <div class="form-group">
-                  <label class="control-label">Foto</label>
-                  <input class="form-control" type="file">
-                </div>
+                </div>                
               </form>
             </div>
             <div class="tile-footer" align=center>

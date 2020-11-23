@@ -14947,6 +14947,7 @@ be a descendant of the grid when it is being dragged.
           flex: 1 0 auto;
   color: #fff;
   text-align: center;
+  justify-content: center;
   font-family: 'Niconne';
   padding: 0 15px;
   font-size: 26px;
