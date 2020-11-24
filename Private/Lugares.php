@@ -1,3 +1,4 @@
+<?php include'config.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -143,8 +144,13 @@
                     <div class="form-group">
                       <label for="exampleSelect1">Categoria</label>
                       <select class="form-control" id="exampleSelect1">
-                        <option>Activo</option>
-                        <option>Inactivo</option>
+                        <option value="0">Seleccionar:</option>
+                        <?php
+                          $query = $mysqli -> query ("SELECT * FROM Categoria");
+                          while ($valores = mysqli_fetch_array($query)) {
+                          echo '<option value="'.$valores[idCategoria].'">'.$valores[nombreCategoria].'</option>';
+                          }
+                        ?>
                       </select>
                     </div>
                   </div>
