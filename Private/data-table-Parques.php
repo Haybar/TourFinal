@@ -1,4 +1,3 @@
-<?php include'config.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -14,7 +13,7 @@
     <meta property="og:url" content="http://pratikborsadiya.in/blog/vali-admin">
     <meta property="og:image" content="http://pratikborsadiya.in/blog/vali-admin/hero-social.png">
     <meta property="og:description" content="Vali is a responsive and free admin theme built with Bootstrap 4, SASS and PUG.js. It's fully customizable and modular.">
-    <title>Lugares</title>
+    <title>Data Table - Vali Admin</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,7 +24,7 @@
   </head>
   <body class="app sidebar-mini">
     <!-- Navbar-->
-    <header class="app-header"><a class="app-header__logo" href="home.html"><img src="images/logoBC.png"></a>
+    <header class="app-header"><a class="app-header__logo" href="index.html">Vali</a>
       <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
       <!-- Navbar Right Menu-->
       <ul class="app-nav">
@@ -33,13 +32,12 @@
           <input class="app-search__input" type="search" placeholder="Search">
           <button class="app-search__button"><i class="fa fa-search"></i></button>
         </li>
-
         <!-- User Menu-->
         <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i class="fa fa-user fa-lg"></i></a>
           <ul class="dropdown-menu settings-menu dropdown-menu-right">
             <li><a class="dropdown-item" href="page-user.html"><i class="fa fa-cog fa-lg"></i> Settings</a></li>
             <li><a class="dropdown-item" href="page-user.html"><i class="fa fa-user fa-lg"></i> Profile</a></li>
-            <li><a class="dropdown-item" href="../login.html"><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
+            <li><a class="dropdown-item" href="page-login.html"><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
           </ul>
         </li>
       </ul>
@@ -57,11 +55,6 @@
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-list"></i><span class="app-menu__label">Control de Usuario</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
             <li><a class="treeview-item" href="tablaUsuarios.php"><i class="icon fa fa-users"></i></i> Usuarios </a></li>
-          </ul>
-        </li>
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-list"></i><span class="app-menu__label">Control de Lugares</span><i class="treeview-indicator fa fa-angle-right"></i></a>
-          <ul class="treeview-menu">
-            <li><a class="treeview-item" href="Lugares.html"><i class="icon fa fa-location-arrow"></i></i> Registro Lugares </a></li>
           </ul>
         </li>
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-list"></i></i><span class="app-menu__label">Atractivo Turistico</span><i class="treeview-indicator fa fa-angle-right"></i></a>
@@ -86,99 +79,81 @@
     <main class="app-content">
       <div class="app-title">
         <div>
-          <h1><i class="fa fa-edit"></i> Lugares</h1>
-          <p>Registro</p>
+          <h1><i class="fa fa-th-list"></i> Parques</h1>
         </div>
-        <ul class="app-breadcrumb breadcrumb">
+        <ul class="app-breadcrumb breadcrumb side">
           <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-          <li class="breadcrumb-item">registro</li>
-          <li class="breadcrumb-item"><a href="#">Lugar</a></li>
+          <li class="breadcrumb-item">Tables</li>
+          <li class="breadcrumb-item active"><a href="#">Parques</a></li>
         </ul>
       </div>
       <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-12">
           <div class="tile">
             <div class="tile-body">
-              <form class="for-balneario" action="registrarLugarbd.php" method="POST">
-                <div class="form-group">
-                  <label class="control-label">Nombre del Lugar</label>
-                  <input class="form-control" name="nombreLugar" type="text" placeholder="Ingrese el nombre del Lugar">
-                </div>
-                <div class="form-group">
-                  <label class="control-label">Descripción</label>
-                  <input class="form-control" name="descripcion" type="text" placeholder="Ingrese una corta Descripción">
-                </div>
-                <div class="form-group">
-                  <label class="control-label">Dirección</label>
-                  <input class="form-control" name="direccion" type="text" placeholder="Ingrese La Dirección">
-                </div>
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label class="control-label">Horario</label>
-                      <input class="form-control" name="horarioAtencion" type="text" placeholder="Ingrese el Horario">
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label class="control-label">Precio Entrada</label>
-                      <input class="form-control" name="entrada" type="text" placeholder="Ingrese el Precio de la Entrada">
-                    </div>
-                  </div>                  
-                </div>
-                               
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label class="control-label">Foto</label>
-                      <input class="form-control" name="foto" type="file">
-                    </div> 
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label for="exampleSelect1">Categoria</label>
-                      <select class="form-control" id="exampleSelect1" name="categoria">
-                        <option value="0">Seleccionar:</option>
-                        <?php
-                          $query = $mysqli -> query ("SELECT * FROM Categoria");
-                          while ($valores = mysqli_fetch_array($query)) {
-                          echo '<option value="'.$valores[idCategoria].'">'.$valores[nombreCategoria].'</option>';
-                          }
-                        ?>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-                  
-                <div class="form-group">
-                  <label class="control-label">Mapa</label>
-                  <br>
-                  <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d30458.427377620897!2d-66.1459570801025!3d-17.39722040005723!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2sbo!4v1605640227160!5m2!1ses!2sbo" width="100%" height="350" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-                  <div class="row">
-                    <div class="col-md-6">
-                      <label class="control-label">Latitud</label>
-                      <input class="form-control" name="latitud" type="text" placeholder="Ingrese la Latitud">
-                    </div>
-                    <div class="col-md-6">
-                      <label class="control-label">Logitud</label>
-                      <input class="form-control" name="longitud" type="text" placeholder="Ingrese la Logitud">
-                    </div>
-                  </div>                  
-                </div>
-                <div class="form-group">
-                  <label for="exampleTextarea">Reseña Historica</label>
-                  <textarea class="form-control" id="exampleTextarea" rows="5" name="reseña"></textarea>
-                </div>
-                <div class="form-group">
-                </div>
-                <div class="tile-footer" align=center>
-                  <button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i>Agregar</button>&nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" href="#"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cancelar</a>
-                </div>               
-              </form>
+              <div class="table-responsive">
+                <table class="table table-hover table-bordered" id="sampleTable">
+                  <thead>
+                    <tr>
+                      <th>No.</th>
+                      <th>Foto</th>
+                      <th>Nombre Parque</th>
+                      <th>Descripción</th>
+                      <th>Dirección</th>
+                      <th>Horario</th>
+                      <th>Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php
+                    include ("config.php");
+                      $sql="SELECT idLugar,foto,nombreLugar,descripcion,direccion,horarioAtencion FROM `Lugar` WHERE Categoria_idCategoria='5';";
+                      $execonsulta=$mysqli->query($sql);
+
+                      if(mysqli_num_rows($execonsulta)>0)
+                      {
+                        $indice=1;
+                        while ($row=mysqli_fetch_array($execonsulta)) 
+                        {
+                    ?>
+                          <tr>
+                            <td><?php echo $indice; ?></td>
+                            <td><?php echo $row['foto']; ?></td>
+                            <td><?php echo $row['nombreLugar']; ?></td>
+                            <td><?php echo $row['descripcion']; ?></td>
+                            <td><?php echo $row['direccion']; ?></td>
+                            <td><?php echo $row['horarioAtencion']; ?></td>
+                            <td>
+                              <div class="row">
+                                <div class="col-md-3">
+                                  <form action="LugaresEditarForm.php" method="POST">
+                                  <input type="hidden" name="idlugar" value="<?php echo $row['idLugar']; ?>"></input>
+                                  <button type="submit" class="btn btn-success btn btn-sm" id="Modificar"><i class="fa fa-pencil-square-o"></i></button>
+                                  </form>
+                                </div>
+                                <hr>
+                                <div class="col-md-7">
+                                  <form action="eliminarLugardb.php" method="POST">
+                                    <input type="hidden" name="idlugar" value="<?php echo $row['idLugar']; ?>"></input>
+                                    <button type="submit" class="btn btn-danger btn btn-sm" id="Eliminar"><i class="fa fa-trash"></i></button>
+                                  </form>
+                                </div>
+                              </div>
+                              
+                            </td>
+
+                          </tr>
+                    <?php
+                          $indice++;
+                        }
+                      }
+                    ?>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>
-        <div class="clearix"></div>
       </div>
     </main>
     <!-- Essential javascripts for application to work-->
@@ -189,6 +164,10 @@
     <!-- The javascript plugin to display page loading on top-->
     <script src="js/plugins/pace.min.js"></script>
     <!-- Page specific javascripts-->
+    <!-- Data table plugin-->
+    <script type="text/javascript" src="js/plugins/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="js/plugins/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript">$('#sampleTable').DataTable();</script>
     <!-- Google analytics script-->
     <script type="text/javascript">
       if(document.location.hostname == 'pratikborsadiya.in') {

@@ -29,19 +29,20 @@
           
           //$sql= "INSERT INTO 'Usuario' SET nombres='$nombres', primerApellido='$apellidoPaterno', segundoApellido='$apellidoMaterno', email='$email', password='$password';";
           $sql = "INSERT INTO Usuario (nombres, primerApellido, segundoApellido, email, password) VALUES ('$nombres', '$apellidoPaterno', '$apellidoMaterno', '$email', '$password');";
+          
           if($mysqli->query($sql))
             {
               echo '<script>';
-                    echo 'alert("Registrado con exito!!");';
-                    echo 'window.location.href="Public/index.html";';
-                echo '</script>';
+                echo 'alert("Registrado con exito!!");';
+                echo 'window.location.href="Public/index.html";';
+              echo '</script>';
             }
             else
               {
               //echo "No Registrado";
               echo '<script>';
-                    echo 'alert("NO Registrado!!");';
-                echo '</script>';
+                echo 'alert("NO Registrado!!");';
+              echo '</script>';
             }
           ?>
           

@@ -70,7 +70,7 @@
             <li><a class="treeview-item" href="CentroCultural.html" target="_blank" rel="noopener"><i class="icon fa fa-home"></i> Centros Culturales </a></li>
             <li><a class="treeview-item" href="Cines.html"><i class="icon fa fa-film"></i> Cines </a></li>
             <li><a class="treeview-item" href="Plazas.html" target="_blank" rel="noopener"><i class="icon fa fa-circle-o"></i> Plazas </a></li>
-            <li><a class="treeview-item" href="data-table-Parques.php"><i class="icon fa fa-tree"></i> Parques </a></li>
+            <li><a class="treeview-item" href="Parques.html"><i class="icon fa fa-tree"></i> Parques </a></li>
           </ul>
         </li>
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-list"></i><span class="app-menu__label">Sitio Turistico</span><i class="treeview-indicator fa fa-angle-right"></i></a>
@@ -99,7 +99,25 @@
         <div class="col-md-8">
           <div class="tile">
             <div class="tile-body">
-              <form class="for-balneario" action="registrarLugarbd.php" method="POST">
+              <?php
+                include("config.php");
+                $idlugar=$_POST['idlugar'];         
+
+                $sql="SELECT * FROM lugar where idLugar='$idlugar'";
+                $execonsulta=$mysqli->query($sql);
+
+                if(mysqli_num_rows($execonsulta)>0)
+                {
+                  while ($row=mysqli_fetch_array($execonsulta)) 
+                  {
+                    $nombreLugar=$row['nombreLugar'];
+                    $direccion=$row['direccion'];
+                    $horarioAtencion=$row['horarioAtencion'];
+                    $foto=$row['foto'];
+                  }
+                }
+              ?>
+              <form class="for-balneario" action="modificarLugarbd.php" method="POST">
                 <div class="form-group">
                   <label class="control-label">Nombre del Lugar</label>
                   <input class="form-control" name="nombreLugar" type="text" placeholder="Ingrese el nombre del Lugar">
@@ -122,17 +140,23 @@
                   <div class="col-md-6">
                     <div class="form-group">
                       <label class="control-label">Precio Entrada</label>
-                      <input class="form-control" name="entrada" type="text" placeholder="Ingrese el Precio de la Entrada">
+                      <input class="form-control" name="entrada" type="text" placeholder="Ingrese el Horario">
                     </div>
                   </div>                  
                 </div>
-                               
+                <div class="form-group">
+                  <label class="control-label">Foto</label>
+                  <input class="form-control" name="foto" type="file">
+                </div>                
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label class="control-label">Foto</label>
-                      <input class="form-control" name="foto" type="file">
-                    </div> 
+                      <label for="exampleSelect1">Estado</label>
+                      <select class="form-control" id="exampleSelect1">
+                        <option>Activo</option>
+                        <option>Inactivo</option>
+                      </select>
+                    </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
