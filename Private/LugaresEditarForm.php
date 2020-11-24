@@ -103,7 +103,7 @@
                 include("config.php");
                 $idlugar=$_POST['idlugar'];         
 
-                $sql="SELECT * FROM lugar where idLugar='$idlugar'";
+                $sql="SELECT * FROM Lugar WHERE idLugar='$idlugar';";
                 $execonsulta=$mysqli->query($sql);
 
                 if(mysqli_num_rows($execonsulta)>0)
@@ -111,57 +111,56 @@
                   while ($row=mysqli_fetch_array($execonsulta)) 
                   {
                     $nombreLugar=$row['nombreLugar'];
+                    $descripcion=$row['descripcion'];
                     $direccion=$row['direccion'];
                     $horarioAtencion=$row['horarioAtencion'];
+                    $entrada=$row['entrada'];
                     $foto=$row['foto'];
+                    $categoria=$row['Categoria_idCategoria'];
+                    $latitud=$row['latitud'];
+                    $longitud=$row['longitud'];
+                    $reseña=$row['reseña'];
                   }
                 }
               ?>
               <form class="for-balneario" action="modificarLugarbd.php" method="POST">
+                <input type="hidden" name="idlugar" class="form-control" value="<?php echo $idlugar; ?>"></input>
                 <div class="form-group">
                   <label class="control-label">Nombre del Lugar</label>
-                  <input class="form-control" name="nombreLugar" type="text" placeholder="Ingrese el nombre del Lugar">
+                  <input class="form-control" name="nombreLugar" type="text" placeholder="Ingrese el nombre del Lugar" value="<?php echo $nombreLugar;?>">
                 </div>
                 <div class="form-group">
                   <label class="control-label">Descripción</label>
-                  <input class="form-control" name="descripcion" type="text" placeholder="Ingrese una corta Descripción">
+                  <input class="form-control" name="descripcion" type="text" placeholder="Ingrese una corta Descripción" value="<?php echo $descripcion;?>">
                 </div>
                 <div class="form-group">
                   <label class="control-label">Dirección</label>
-                  <input class="form-control" name="direccion" type="text" placeholder="Ingrese La Dirección">
+                  <input class="form-control" name="direccion" type="text" placeholder="Ingrese La Dirección" value="<?php echo $direccion;?>">
                 </div>
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
                       <label class="control-label">Horario</label>
-                      <input class="form-control" name="horarioAtencion" type="text" placeholder="Ingrese el Horario">
+                      <input class="form-control" name="horarioAtencion" type="text" placeholder="Ingrese el Horario" value="<?php echo $horarioAtencion;?>">
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
                       <label class="control-label">Precio Entrada</label>
-                      <input class="form-control" name="entrada" type="text" placeholder="Ingrese el Horario">
+                      <input class="form-control" name="entrada" type="text" placeholder="Ingrese el Horario" 
+                      value="<?php echo $entrada;?>">
                     </div>
                   </div>                  
                 </div>
                 <div class="form-group">
                   <label class="control-label">Foto</label>
-                  <input class="form-control" name="foto" type="file">
+                  <input class="form-control" name="foto" type="file" value="<?php echo $foto;?>">
                 </div>                
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label for="exampleSelect1">Estado</label>
-                      <select class="form-control" id="exampleSelect1">
-                        <option>Activo</option>
-                        <option>Inactivo</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
                       <label for="exampleSelect1">Categoria</label>
-                      <select class="form-control" id="exampleSelect1" name="categoria">
+                      <select class="form-control" id="exampleSelect1" name="categoria" value="<?php echo $categoria;?>">
                         <option value="0">Seleccionar:</option>
                         <?php
                           $query = $mysqli -> query ("SELECT * FROM Categoria");
@@ -181,22 +180,22 @@
                   <div class="row">
                     <div class="col-md-6">
                       <label class="control-label">Latitud</label>
-                      <input class="form-control" name="latitud" type="text" placeholder="Ingrese la Latitud">
+                      <input class="form-control" name="latitud" type="text" placeholder="Ingrese la Latitud" value="<?php echo $latitud;?>">
                     </div>
                     <div class="col-md-6">
                       <label class="control-label">Logitud</label>
-                      <input class="form-control" name="longitud" type="text" placeholder="Ingrese la Logitud">
+                      <input class="form-control" name="longitud" type="text" placeholder="Ingrese la Longitud" value="<?php echo $longitud;?>">
                     </div>
                   </div>                  
                 </div>
                 <div class="form-group">
                   <label for="exampleTextarea">Reseña Historica</label>
-                  <textarea class="form-control" id="exampleTextarea" rows="5" name="reseña"></textarea>
+                  <textarea class="form-control" id="exampleTextarea" rows="5" name="reseña"><?php echo $reseña;?></textarea>
                 </div>
                 <div class="form-group">
                 </div>
                 <div class="tile-footer" align=center>
-                  <button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i>Agregar</button>&nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" href="#"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cancelar</a>
+                  <button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i>Guardar</button>&nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" href="data-table-Parques.php"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cancelar</a>
                 </div>               
               </form>
             </div>

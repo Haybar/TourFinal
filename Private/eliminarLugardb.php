@@ -13,6 +13,7 @@
 </head>
 <body>
 <div class="container">
+  <h1>Bootstrap</h1>
   <div class="row">
     <div class="col-md-12">
       <div class="card">
@@ -22,19 +23,9 @@
           <?php 
           include("config.php");
           $idlugar=$_POST['idlugar'];
-          $nombreLugar=$_POST['nombreLugar'];
-          $descripcion=$_POST['descripcion'];
-          $direccion=$_POST['direccion'];
-          $horarioAtencion=$_POST['horarioAtencion'];
-          $entrada=$_POST['entrada'];
-          $foto=$_POST['foto'];
-          $categoria=$_POST['categoria'];
-          $latitud=$_POST['latitud'];
-          $longitud=$_POST['longitud'];
-          $reseña=$_POST['reseña'];
+          $estado=$_POST['estado'];
 
-          $sql="UPDATE Lugar SET nombreLugar='$nombreLugar', descripcion='$descripcion', direccion='$direccion', horarioAtencion='$horarioAtencion', entrada='$entrada', foto='$foto', Categoria_idCategoria='$categoria', latitud='$latitud', longitud='$longitud', reseña='$reseña' WHERE idLugar='$idlugar';";
-
+          $sql="UPDATE Lugar SET estado='0' WHERE idLugar='$idlugar'";
 
           if($mysqli->query($sql))
             {
@@ -46,7 +37,7 @@
             else
               {
               echo '<script>';
-                echo 'alert("No se pudo guardar los cambios!!");';
+                echo 'alert("Error: No se pudo eliminar!!");';
                 echo 'window.location.href="data-table-Parques.php";';
               echo '</script>';
             }
