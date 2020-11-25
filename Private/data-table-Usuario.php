@@ -80,17 +80,24 @@
         <li><a class="app-menu__item" href="Restaurantes.html"><i class="app-menu__icon fa fa-cutlery"></i><span class="app-menu__label">Restaurantes</span></a></li>
         <li><a class="app-menu__item" href="Universidades.html"><i class="app-menu__icon fa fa-university"></i><span class="app-menu__label">Universidades</span></a></li>
         <li><a class="app-menu__item" href="Instituciones.html"><i class="app-menu__icon fa fa-briefcase"></i><span class="app-menu__label">Instituciones</span></a></li>
+        <li><a class="app-menu__item" href="Eventos.php"><i class="app-menu__icon fa fa-calendar"></i><span class="app-menu__label">Eventos</span></a></li>
     </aside>
     <main class="app-content">
       <div class="app-title">
-        <div>
-          <h1><i class="fa fa-th-list"></i> Parques</h1>
-        </div>
-        <ul class="app-breadcrumb breadcrumb side">
-          <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-          <li class="breadcrumb-item">Tables</li>
-          <li class="breadcrumb-item active"><a href="#">Parques</a></li>
-        </ul>
+        <div class="col-lg-12">
+            <div class="bs-component">
+              <ul class="nav nav-tabs">
+                <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#home">Inicio</a></li>
+                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#profile">Profile</a></li>
+                <li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a></li>
+                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                  <div class="dropdown-menu"><a class="dropdown-item" href="#">Action</a><a class="dropdown-item" href="#">Another action</a><a class="dropdown-item" href="#">Something else here</a>
+                    <div class="dropdown-divider"></div><a class="dropdown-item" href="#">Separated link</a>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
       </div>
       <div class="row">
         <div class="col-md-12">
