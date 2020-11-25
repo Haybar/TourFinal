@@ -22,23 +22,23 @@
 
           <?php 
           include("config.php");
-          $idlugar=$_POST['idlugar'];
+          $idusuario=$_POST['idusuario'];
           $estado=$_POST['estado'];
 
-          $sql="UPDATE Lugar SET estado='0' WHERE idLugar='$idlugar'";
+          $sql="UPDATE Usuario SET estado='0' WHERE idUsuario='$idusuario'";
 
           if($mysqli->query($sql))
             {
               echo '<script>';
-                echo 'alert("Eliminación exitosa!!");';
-                echo 'window.location.href="data-table-Parques.php";';
+                echo 'alert("Usuario eliminado con éxito!!");';
+                echo 'window.location.href="data-table-Usuario.php";';
               echo '</script>';
             }
             else
               {
               echo '<script>';
-                echo 'alert("Error: No se pudo eliminar!!");';
-                echo 'window.location.href="data-table-Parques.php";';
+                echo 'alert("Error: Usuario No eliminado!!");';
+                echo 'window.location.href="data-table-Usuario.php";';
               echo '</script>';
             }
           ?>

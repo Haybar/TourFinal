@@ -37,7 +37,7 @@
           <ul class="dropdown-menu settings-menu dropdown-menu-right">
             <li><a class="dropdown-item" href="page-user.html"><i class="fa fa-cog fa-lg"></i> Settings</a></li>
             <li><a class="dropdown-item" href="page-user.html"><i class="fa fa-user fa-lg"></i> Profile</a></li>
-            <li><a class="dropdown-item" href="page-login.html"><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
+            <li><a class="dropdown-item" href="../login.html"><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
           </ul>
         </li>
       </ul>
@@ -102,17 +102,17 @@
                     <tr>
                       <th>No.</th>
                       <th>Foto</th>
-                      <th>Nombre Parque</th>
-                      <th>Descripción</th>
-                      <th>Dirección</th>
-                      <th>Horario</th>
+                      <th>Nombre Completo</th>
+                      <th>Email</th>
+                      <th>Password</th>
+                      <th>Tipo</th>
                       <th>Acciones</th>
                     </tr>
                   </thead>
                   <tbody>
                     <?php
                     include ("config.php");
-                      $sql="SELECT idLugar,foto,nombreLugar,descripcion,direccion,horarioAtencion FROM `Lugar` WHERE Categoria_idCategoria='5' AND estado='1';";
+                      $sql="SELECT * FROM `Usuario` WHERE estado='1';";
                       $execonsulta=$mysqli->query($sql);
 
                       if(mysqli_num_rows($execonsulta)>0)
@@ -124,22 +124,22 @@
                           <tr>
                             <td><?php echo $indice; ?></td>
                             <td><?php echo $row['foto']; ?></td>
-                            <td><?php echo $row['nombreLugar']; ?></td>
-                            <td><?php echo $row['descripcion']; ?></td>
-                            <td><?php echo $row['direccion']; ?></td>
-                            <td><?php echo $row['horarioAtencion']; ?></td>
+                            <td><?php echo $row['primerApellido'],' ',$row['segundoApellido'],' ',$row['nombres']; ?></td>
+                            <td><?php echo $row['email']; ?></td>
+                            <td><?php echo md5($row['password']);?></td>
+                            <td><?php echo $row['tipo']; ?></td>
                             <td>
                               <div class="row">
                                 <div class="col-md-3">
-                                  <form action="LugaresEditarForm.php" method="POST">
-                                  <input type="hidden" name="idlugar" value="<?php echo $row['idLugar']; ?>"></input>
+                                  <form action="modificarUsuario.php" method="POST">
+                                  <input type="hidden" name="idusuario" value="<?php echo $row['idUsuario']; ?>"></input>
                                   <button type="submit" class="btn btn-success btn btn-sm" id="Modificar"><i class="fa fa-pencil-square-o"></i></button>
                                   </form>
                                 </div>
                                 <hr>
                                 <div class="col-md-7">
-                                  <form action="eliminarLugardb.php" method="POST">
-                                    <input type="hidden" name="idlugar" value="<?php echo $row['idLugar']; ?>"></input>
+                                  <form action="eliminarUsuariodb.php" method="POST">
+                                    <input type="hidden" name="idusuario" value="<?php echo $row['idUsuario']; ?>"></input>
                                     <button type="submit" class="btn btn-danger btn btn-sm" id="Eliminar"><i class="fa fa-trash"></i></button>
                                   </form>
                                 </div>
@@ -176,12 +176,12 @@
     <!-- Google analytics script-->
     <script type="text/javascript">
       if(document.location.hostname == 'pratikborsadiya.in') {
-      	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-      	ga('create', 'UA-72504830-1', 'auto');
-      	ga('send', 'pageview');
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-72504830-1', 'auto');
+        ga('send', 'pageview');
       }
     </script>
   </body>

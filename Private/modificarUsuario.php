@@ -1,3 +1,4 @@
+<?php include'config.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -13,7 +14,7 @@
     <meta property="og:url" content="http://pratikborsadiya.in/blog/vali-admin">
     <meta property="og:image" content="http://pratikborsadiya.in/blog/vali-admin/hero-social.png">
     <meta property="og:description" content="Vali is a responsive and free admin theme built with Bootstrap 4, SASS and PUG.js. It's fully customizable and modular.">
-    <title>Data Table - Vali Admin</title>
+    <title>Lugares</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -32,12 +33,13 @@
           <input class="app-search__input" type="search" placeholder="Search">
           <button class="app-search__button"><i class="fa fa-search"></i></button>
         </li>
+
         <!-- User Menu-->
         <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i class="fa fa-user fa-lg"></i></a>
           <ul class="dropdown-menu settings-menu dropdown-menu-right">
             <li><a class="dropdown-item" href="page-user.html"><i class="fa fa-cog fa-lg"></i> Settings</a></li>
             <li><a class="dropdown-item" href="page-user.html"><i class="fa fa-user fa-lg"></i> Profile</a></li>
-            <li><a class="dropdown-item" href="page-login.html"><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
+            <li><a class="dropdown-item" href="../login.html"><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
           </ul>
         </li>
       </ul>
@@ -59,7 +61,7 @@
         </li>
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-list"></i><span class="app-menu__label">Control de Lugares</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
-            <li><a class="treeview-item" href="Lugares.php"><i class="icon fa fa-location-arrow"></i></i> Registro Lugares </a></li>
+            <li><a class="treeview-item" href="Lugares.html"><i class="icon fa fa-location-arrow"></i></i> Registro Lugares </a></li>
           </ul>
         </li>
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-list"></i></i><span class="app-menu__label">Atractivo Turistico</span><i class="treeview-indicator fa fa-angle-right"></i></a>
@@ -68,7 +70,7 @@
             <li><a class="treeview-item" href="CentroCultural.html" target="_blank" rel="noopener"><i class="icon fa fa-home"></i> Centros Culturales </a></li>
             <li><a class="treeview-item" href="Cines.html"><i class="icon fa fa-film"></i> Cines </a></li>
             <li><a class="treeview-item" href="Plazas.html" target="_blank" rel="noopener"><i class="icon fa fa-circle-o"></i> Plazas </a></li>
-            <li><a class="treeview-item" href="data-table-Parques.php"><i class="icon fa fa-tree"></i> Parques </a></li>
+            <li><a class="treeview-item" href="Parques.html"><i class="icon fa fa-tree"></i> Parques </a></li>
           </ul>
         </li>
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-list"></i><span class="app-menu__label">Sitio Turistico</span><i class="treeview-indicator fa fa-angle-right"></i></a>
@@ -84,81 +86,92 @@
     <main class="app-content">
       <div class="app-title">
         <div>
-          <h1><i class="fa fa-th-list"></i> Parques</h1>
+          <h1><i class="fa fa-edit"></i> Lugares</h1>
+          <p>Registro</p>
         </div>
-        <ul class="app-breadcrumb breadcrumb side">
+        <ul class="app-breadcrumb breadcrumb">
           <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-          <li class="breadcrumb-item">Tables</li>
-          <li class="breadcrumb-item active"><a href="#">Parques</a></li>
+          <li class="breadcrumb-item">registro</li>
+          <li class="breadcrumb-item"><a href="#">Lugar</a></li>
         </ul>
       </div>
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-8">
           <div class="tile">
             <div class="tile-body">
-              <div class="table-responsive">
-                <table class="table table-hover table-bordered" id="sampleTable">
-                  <thead>
-                    <tr>
-                      <th>No.</th>
-                      <th>Foto</th>
-                      <th>Nombre Parque</th>
-                      <th>Descripción</th>
-                      <th>Dirección</th>
-                      <th>Horario</th>
-                      <th>Acciones</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <?php
-                    include ("config.php");
-                      $sql="SELECT idLugar,foto,nombreLugar,descripcion,direccion,horarioAtencion FROM `Lugar` WHERE Categoria_idCategoria='5' AND estado='1';";
-                      $execonsulta=$mysqli->query($sql);
+              <?php
+                include("config.php");
+                $idusuario=$_POST['idusuario'];         
 
-                      if(mysqli_num_rows($execonsulta)>0)
-                      {
-                        $indice=1;
-                        while ($row=mysqli_fetch_array($execonsulta)) 
-                        {
-                    ?>
-                          <tr>
-                            <td><?php echo $indice; ?></td>
-                            <td><?php echo $row['foto']; ?></td>
-                            <td><?php echo $row['nombreLugar']; ?></td>
-                            <td><?php echo $row['descripcion']; ?></td>
-                            <td><?php echo $row['direccion']; ?></td>
-                            <td><?php echo $row['horarioAtencion']; ?></td>
-                            <td>
-                              <div class="row">
-                                <div class="col-md-3">
-                                  <form action="LugaresEditarForm.php" method="POST">
-                                  <input type="hidden" name="idlugar" value="<?php echo $row['idLugar']; ?>"></input>
-                                  <button type="submit" class="btn btn-success btn btn-sm" id="Modificar"><i class="fa fa-pencil-square-o"></i></button>
-                                  </form>
-                                </div>
-                                <hr>
-                                <div class="col-md-7">
-                                  <form action="eliminarLugardb.php" method="POST">
-                                    <input type="hidden" name="idlugar" value="<?php echo $row['idLugar']; ?>"></input>
-                                    <button type="submit" class="btn btn-danger btn btn-sm" id="Eliminar"><i class="fa fa-trash"></i></button>
-                                  </form>
-                                </div>
-                              </div>
-                              
-                            </td>
+                $sql="SELECT * FROM Usuario WHERE idUsuario='$idusuario';";
+                $execonsulta=$mysqli->query($sql);
 
-                          </tr>
-                    <?php
-                          $indice++;
-                        }
-                      }
-                    ?>
-                  </tbody>
-                </table>
-              </div>
+                if(mysqli_num_rows($execonsulta)>0)
+                {
+                  while ($row=mysqli_fetch_array($execonsulta)) 
+                  {
+                    $nombres=$row['nombres'];
+                    $primerApellido=$row['primerApellido'];
+                    $segundoApellido=$row['segundoApellido'];
+                    $email=$row['email'];
+                    $foto=$row['foto'];
+                    $tipo=$row['tipo'];
+                  }
+                }
+              ?>
+              <form class="for-balneario" action="modificarUsuariobd.php" method="POST">
+                <input type="hidden" name="idusuario" class="form-control" value="<?php echo $idusuario; ?>"></input>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="control-label">Nombres</label>
+                      <input class="form-control" name="nombres" type="text" placeholder="Ingrese su nombre" value="<?php echo $nombres;?>">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="control-label">Foto</label>
+                      <input class="form-control" name="foto" type="file" value="<?php echo $foto;?>">
+                    </div>
+                  </div>
+                </div>                
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="control-label">Apellido Paterno</label>
+                      <input class="form-control" name="primerApellido" type="text" placeholder="Ingrese su Apellido Paterno" value="<?php echo $primerApellido;?>">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="control-label">Apellido Materno</label>
+                      <input class="form-control" name="segundoApellido" type="text" placeholder="Ingrese su Apellido Materno" value="<?php echo $segundoApellido;?>">
+                    </div>
+                  </div>
+                </div>                
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="control-label">Email</label>
+                      <input class="form-control" name="email" type="Email" placeholder="Ingrese su Email" value="<?php echo $email;?>">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="control-label">Tipo</label>
+                      <input class="form-control" name="tipo" type="text" placeholder="Ingrese el Tipo de Usuario"
+                      value="<?php echo $tipo;?>">
+                    </div>
+                  </div>                  
+                </div>
+                <div class="tile-footer" align=center>
+                  <button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i>Guardar</button>&nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" href="data-table-Usuario.php"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cancelar</a>
+                </div>               
+              </form>
             </div>
           </div>
         </div>
+        <div class="clearix"></div>
       </div>
     </main>
     <!-- Essential javascripts for application to work-->
@@ -169,10 +182,6 @@
     <!-- The javascript plugin to display page loading on top-->
     <script src="js/plugins/pace.min.js"></script>
     <!-- Page specific javascripts-->
-    <!-- Data table plugin-->
-    <script type="text/javascript" src="js/plugins/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="js/plugins/dataTables.bootstrap.min.js"></script>
-    <script type="text/javascript">$('#sampleTable').DataTable();</script>
     <!-- Google analytics script-->
     <script type="text/javascript">
       if(document.location.hostname == 'pratikborsadiya.in') {

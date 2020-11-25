@@ -13,7 +13,6 @@
 </head>
 <body>
 <div class="container">
-  <h1>Bootstrap</h1>
   <div class="row">
     <div class="col-md-12">
       <div class="card">
@@ -22,23 +21,29 @@
 
           <?php 
           include("config.php");
-          $idlugar=$_POST['idlugar'];
-          $estado=$_POST['estado'];
+          $idusuario=$_POST['idusuario'];
+          $nombres=$_POST['nombres'];
+          $primerApellido=$_POST['primerApellido'];
+          $segundoApellido=$_POST['segundoApellido'];
+          $email=$_POST['email'];
+          $tipo=$_POST['tipo'];
+          $foto=$_POST['foto'];
 
-          $sql="UPDATE Lugar SET estado='0' WHERE idLugar='$idlugar'";
+          $sql="UPDATE Usuario SET nombres='$nombres', primerApellido='$primerApellido', segundoApellido='$segundoApellido', email='$email', tipo='$tipo', foto='$foto' WHERE idUsuario='$idusuario';";
+
 
           if($mysqli->query($sql))
             {
               echo '<script>';
-                echo 'alert("Eliminación exitosa!!");';
-                echo 'window.location.href="data-table-Parques.php";';
+                echo 'alert("Cambios Guardados con exito!!");';
+                echo 'window.location.href="data-table-Usuario.php";';
               echo '</script>';
             }
             else
               {
               echo '<script>';
-                echo 'alert("Error: No se pudo eliminar!!");';
-                echo 'window.location.href="data-table-Parques.php";';
+                echo 'alert("No se pudo guardar los cambios!!");';
+                echo 'window.location.href="data-table-Usuario.php";';
               echo '</script>';
             }
           ?>
@@ -53,4 +58,5 @@
 </div>
 
   </body>
+</html>
 </html>
