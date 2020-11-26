@@ -86,8 +86,8 @@
     <main class="app-content">
       <div class="app-title">
         <div>
-          <h1><i class="fa fa-edit"></i> Lugares</h1>
-          <p>Registro</p>
+          <h1><i class="fa fa-edit"></i> Usuario</h1>
+          <p>Modificar</p>
         </div>
         <ul class="app-breadcrumb breadcrumb">
           <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>

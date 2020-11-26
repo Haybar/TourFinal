@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta name="description" content="Vali is a responsive and free admin theme built with Bootstrap 4, SASS and PUG.js. It's fully customizable and modular.">
     <!-- Twitter meta-->
@@ -80,83 +80,45 @@
         <li><a class="app-menu__item" href="Restaurantes.html"><i class="app-menu__icon fa fa-cutlery"></i><span class="app-menu__label">Restaurantes</span></a></li>
         <li><a class="app-menu__item" href="Universidades.html"><i class="app-menu__icon fa fa-university"></i><span class="app-menu__label">Universidades</span></a></li>
         <li><a class="app-menu__item" href="Instituciones.html"><i class="app-menu__icon fa fa-briefcase"></i><span class="app-menu__label">Instituciones</span></a></li>
-        <li><a class="app-menu__item" href="Eventos.php"><i class="app-menu__icon fa fa-cutlery"></i><span class="app-menu__label">Eventos</span></a></li>
+        <li><a class="app-menu__item" href="Eventos.php"><i class="app-menu__icon fa fa-calendar"></i><span class="app-menu__label">Eventos</span></a></li>
     </aside>
     <main class="app-content">
       <div class="app-title">
-        <div>
-          <h1><i class="fa fa-th-list"></i> Parques</h1>
-        </div>
-        <ul class="app-breadcrumb breadcrumb side">
-          <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-          <li class="breadcrumb-item">Tables</li>
-          <li class="breadcrumb-item active"><a href="#">Parques</a></li>
-        </ul>
+        <div class="col-lg-12">
+            <div class="bs-component">
+              <ul class="nav nav-tabs">
+                <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#home">Inicio</a></li>
+                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#profile">Profile</a></li>
+                <li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a></li>
+                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                  <div class="dropdown-menu"><a class="dropdown-item" href="#">Action</a><a class="dropdown-item" href="#">Another action</a><a class="dropdown-item" href="#">Something else here</a>
+                    <div class="dropdown-divider"></div><a class="dropdown-item" href="#">Separated link</a>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
       </div>
       <div class="row">
         <div class="col-md-12">
-          <div class="tile">
-            <div class="tile-body">
-              <div class="table-responsive">
-                <table class="table table-hover table-bordered" id="sampleTable">
-                  <thead>
-                    <tr>
-                      <th>No.</th>
-                      <th>Foto</th>
-                      <th>Nombre Completo</th>
-                      <th>Email</th>
-                      <th>Password</th>
-                      <th>Tipo</th>
-                      <th>Acciones</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <?php
-                    include ("config.php");
-                      $sql="SELECT * FROM `Usuario` WHERE estado='1';";
-                      $execonsulta=$mysqli->query($sql);
-
-                      if(mysqli_num_rows($execonsulta)>0)
-                      {
-                        $indice=1;
-                        while ($row=mysqli_fetch_array($execonsulta)) 
-                        {
-                    ?>
-                          <tr>
-                            <td><?php echo $indice; ?></td>
-                            <td><?php echo $row['foto']; ?></td>
-                            <td><?php echo $row['primerApellido'],' ',$row['segundoApellido'],' ',$row['nombres']; ?></td>
-                            <td><?php echo $row['email']; ?></td>
-                            <td><?php echo md5($row['password']);?></td>
-                            <td><?php echo $row['tipo']; ?></td>
-                            <td>
-                              <div class="row">
-                                <div class="col-md-3">
-                                  <form action="modificarUsuario.php" method="POST">
-                                  <input type="hidden" name="idusuario" value="<?php echo $row['idUsuario']; ?>"></input>
-                                  <button type="submit" class="btn btn-success btn btn-sm" id="Modificar"><i class="fa fa-pencil-square-o"></i></button>
-                                  </form>
-                                </div>
-                                <hr>
-                                <div class="col-md-7">
-                                  <form action="eliminarUsuariodb.php" method="POST">
-                                    <input type="hidden" name="idusuario" value="<?php echo $row['idUsuario']; ?>"></input>
-                                    <button type="submit" class="btn btn-danger btn btn-sm" id="Eliminar"><i class="fa fa-trash"></i></button>
-                                  </form>
-                                </div>
-                              </div>
-                              
-                            </td>
-
-                          </tr>
-                    <?php
-                          $indice++;
-                        }
-                      }
-                    ?>
-                  </tbody>
-                </table>
+          <div class="tile row">
+            <div class="col-md-3">
+              <div id="external-events">
+                <h4 class="mb-4">Draggable Events</h4>
+                <div class="fc-event">My Event 1</div>
+                <div class="fc-event">My Event 2</div>
+                <div class="fc-event">My Event 3</div>
+                <div class="fc-event">My Event 4</div>
+                <div class="fc-event">My Event 5</div>
+                <p class="animated-checkbox mt-20">
+                  <label>
+                    <input id="drop-remove" type="checkbox"><span class="label-text">Remove after drop</span>
+                  </label>
+                </p>
               </div>
+            </div>
+            <div class="col-md-9">
+              <div id="calendar"></div>
             </div>
           </div>
         </div>
@@ -164,16 +126,62 @@
     </main>
     <!-- Essential javascripts for application to work-->
     <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/jquery.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/main.js"></script>
     <!-- The javascript plugin to display page loading on top-->
     <script src="js/plugins/pace.min.js"></script>
     <!-- Page specific javascripts-->
-    <!-- Data table plugin-->
-    <script type="text/javascript" src="js/plugins/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="js/plugins/dataTables.bootstrap.min.js"></script>
-    <script type="text/javascript">$('#sampleTable').DataTable();</script>
+    <script type="text/javascript" src="js/plugins/moment.min.js"></script>
+    <script type="text/javascript" src="js/plugins/jquery-ui.custom.min.js"></script>
+    <script type="text/javascript" src="js/plugins/fullcalendar.min.js"></script>
+    <script src="js/es.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+      
+        $('#external-events .fc-event').each(function() {
+      
+          // store data so the calendar knows to render an event upon drop
+          $(this).data('event', {
+            title: $.trim($(this).text()), // use the element's text as the event title
+            stick: true // maintain when user navigates (see docs on the renderEvent method)
+          });
+      
+          // make the event draggable using jQuery UI
+          $(this).draggable({
+            zIndex: 999,
+            revert: true,      // will cause the event to go back to its
+            revertDuration: 0  //  original position after the drag
+          });
+      
+        });
+      
+        $('#calendar').fullCalendar({
+          header: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'month,agendaWeek,agendaDay',
+          },
+          monthNames: ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
+          monthNamesShort: ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'],
+          dayNames: ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'],
+          dayNamesShort: ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'],
+          editable: true,
+          droppable: true, // this allows things to be dropped onto the calendar
+          drop: function() {
+            // is the "remove after drop" checkbox checked?
+            if ($('#drop-remove').is(':checked')) {
+              // if so, remove the element from the "Draggable Events" list
+              $(this).remove();
+            }
+          },
+          
+        });
+      
+      
+      });
+    </script>
     <!-- Google analytics script-->
     <script type="text/javascript">
       if(document.location.hostname == 'pratikborsadiya.in') {
