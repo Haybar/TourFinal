@@ -57,43 +57,33 @@
             <li><a class="treeview-item" href="data-table-Usuario.php"><i class="icon fa fa-users"></i></i> Usuarios </a></li>
           </ul>
         </li>
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-list"></i><span class="app-menu__label">Control de Lugares</span><i class="treeview-indicator fa fa-angle-right"></i></a>
-          <ul class="treeview-menu">
-            <li><a class="treeview-item" href="Lugares.php"><i class="icon fa fa-location-arrow"></i></i> Registro Lugares </a></li>
-          </ul>
-        </li>
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-list"></i></i><span class="app-menu__label">Atractivo Turistico</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
-            <li><a class="treeview-item" href="Balnearios.html"><i class="icon fa fa-shower"></i> Balnearios </a></li>
-            <li><a class="treeview-item" href="CentroCultural.html" target="_blank" rel="noopener"><i class="icon fa fa-home"></i> Centros Culturales </a></li>
-            <li><a class="treeview-item" href="Cines.html"><i class="icon fa fa-film"></i> Cines </a></li>
-            <li><a class="treeview-item" href="Plazas.html" target="_blank" rel="noopener"><i class="icon fa fa-circle-o"></i> Plazas </a></li>
+            <li><a class="treeview-item" href="data-table-Balneario.php"><i class="icon fa fa-shower"></i> Balnearios </a></li>
+            <li><a class="treeview-item" href="data-table-CentroCultural.php" rel="noopener"><i class="icon fa fa-home"></i> Centros Culturales </a></li>
+            <li><a class="treeview-item" href="data-table-Cine.php"><i class="icon fa fa-film"></i> Cines </a></li>
+            <li><a class="treeview-item" href="data-table-Plaza.php"  rel="noopener"><i class="icon fa fa-circle-o"></i> Plazas </a></li>
             <li><a class="treeview-item" href="data-table-Parques.php"><i class="icon fa fa-tree"></i> Parques </a></li>
           </ul>
         </li>
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-list"></i><span class="app-menu__label">Sitio Turistico</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
-            <li><a class="treeview-item" href="Iglesias.html"><i class="icon fas fa-church"></i> Iglesias </a></li>
-            <li><a class="treeview-item" href="Museos.html" target="_blank" rel="noopener"><i class="icon fa fa-building-o"></i> Museos </a></li>
+            <li><a class="treeview-item" href="data-table-Iglesia.php"><i class="icon fas fa-church"></i> Iglesias </a></li>
+            <li><a class="treeview-item" href="data-table-Museo.php"  rel="noopener"><i class="icon fa fa-building-o"></i> Museos </a></li>
           </ul>
         </li>
-        <li><a class="app-menu__item" href="Restaurantes.html"><i class="app-menu__icon fa fa-cutlery"></i><span class="app-menu__label">Restaurantes</span></a></li>
-        <li><a class="app-menu__item" href="Universidades.html"><i class="app-menu__icon fa fa-university"></i><span class="app-menu__label">Universidades</span></a></li>
-        <li><a class="app-menu__item" href="Instituciones.html"><i class="app-menu__icon fa fa-briefcase"></i><span class="app-menu__label">Instituciones</span></a></li>
+        <li><a class="app-menu__item" href="data-table-Restaurante.php"><i class="app-menu__icon fa fa-cutlery"></i><span class="app-menu__label">Restaurantes</span></a></li>
+        <li><a class="app-menu__item" href="data-table-Universidad.php"><i class="app-menu__icon fa fa-university"></i><span class="app-menu__label">Universidades</span></a></li>
+        <li><a class="app-menu__item" href="data-table-Institucion.php"><i class="app-menu__icon fa fa-briefcase"></i><span class="app-menu__label">Instituciones</span></a></li>
+        <li><a class="app-menu__item" href="Eventos.php"><i class="app-menu__icon fa fa-calendar"></i><span class="app-menu__label">Eventos</span></a></li>
     </aside>
     <main class="app-content">
       <div class="app-title">
         <div class="col-lg-12">
             <div class="bs-component">
               <ul class="nav nav-tabs">
-                <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#home">Inicio</a></li>
-                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#profile">Profile</a></li>
-                <li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a></li>
-                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                  <div class="dropdown-menu"><a class="dropdown-item" href="#">Action</a><a class="dropdown-item" href="#">Another action</a><a class="dropdown-item" href="#">Something else here</a>
-                    <div class="dropdown-divider"></div><a class="dropdown-item" href="#">Separated link</a>
-                  </div>
-                </li>
+                <li class="nav-item"><a class="nav-link active"  href="data-table-Parques.php">Inicio</a></li>
+                <li class="nav-item"><a class="nav-link"  href="Parque.php">Profile</a></li>
               </ul>
             </div>
           </div>
@@ -108,7 +98,7 @@
                     <tr>
                       <th>No.</th>
                       <th>Foto</th>
-                      <th>Nombre Parque</th>
+                      <th>Parque</th>
                       <th>Descripción</th>
                       <th>Dirección</th>
                       <th>Horario</th>
@@ -124,7 +114,7 @@
                       if(mysqli_num_rows($execonsulta)>0)
                       {
                         $indice=1;
-                        while ($row=mysqli_fetch_array($execonsulta)) 
+                        while ($row=mysqli_fetch_array($execonsulta))
                         {
                     ?>
                           <tr>
@@ -150,7 +140,7 @@
                                   </form>
                                 </div>
                               </div>
-                              
+
                             </td>
 
                           </tr>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
   <head>
     <meta name="description" content="Vali is a responsive and free admin theme built with Bootstrap 4, SASS and PUG.js. It's fully customizable and modular.">
     <!-- Twitter meta-->
@@ -37,7 +37,7 @@
           <ul class="dropdown-menu settings-menu dropdown-menu-right">
             <li><a class="dropdown-item" href="page-user.html"><i class="fa fa-cog fa-lg"></i> Settings</a></li>
             <li><a class="dropdown-item" href="page-user.html"><i class="fa fa-user fa-lg"></i> Profile</a></li>
-            <li><a class="dropdown-item" href="../login.html"><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
+            <li><a class="dropdown-item" href="page-login.html"><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
           </ul>
         </li>
       </ul>
@@ -82,32 +82,76 @@
         <div class="col-lg-12">
             <div class="bs-component">
               <ul class="nav nav-tabs">
-                <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#home">Inicio</a></li>
-                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#profile">Profile</a></li>
+                <li class="nav-item"><a class="nav-link active"  href="data-table-Iglesia.php">Inicio</a></li>
+                <li class="nav-item"><a class="nav-link"  href="Iglesia.php">Profile</a></li>
               </ul>
             </div>
           </div>
       </div>
       <div class="row">
         <div class="col-md-12">
-          <div class="tile row">
-            <div class="col-md-3">
-              <div id="external-events">
-                <h4 class="mb-4">Draggable Events</h4>
-                <div class="fc-event">My Event 1</div>
-                <div class="fc-event">My Event 2</div>
-                <div class="fc-event">My Event 3</div>
-                <div class="fc-event">My Event 4</div>
-                <div class="fc-event">My Event 5</div>
-                <p class="animated-checkbox mt-20">
-                  <label>
-                    <input id="drop-remove" type="checkbox"><span class="label-text">Remove after drop</span>
-                  </label>
-                </p>
+          <div class="tile">
+            <div class="tile-body">
+              <div class="table-responsive">
+                <table class="table table-hover table-bordered" id="sampleTable">
+                  <thead>
+                    <tr>
+                      <th>No.</th>
+                      <th>Foto</th>
+                      <th>Iglésia</th>
+                      <th>Descripción</th>
+                      <th>Dirección</th>
+                      <th>Horario</th>
+                      <th>Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php
+                    include ("config.php");
+                      $sql="SELECT idLugar,foto,nombreLugar,descripcion,direccion,horarioAtencion FROM `Lugar` WHERE Categoria_idCategoria='4' AND estado='1';";
+                      $execonsulta=$mysqli->query($sql);
+
+                      if(mysqli_num_rows($execonsulta)>0)
+                      {
+                        $indice=1;
+                        while ($row=mysqli_fetch_array($execonsulta))
+                        {
+                    ?>
+                          <tr>
+                            <td><?php echo $indice; ?></td>
+                            <td><?php echo $row['foto']; ?></td>
+                            <td><?php echo $row['nombreLugar']; ?></td>
+                            <td><?php echo $row['descripcion']; ?></td>
+                            <td><?php echo $row['direccion']; ?></td>
+                            <td><?php echo $row['horarioAtencion']; ?></td>
+                            <td>
+                              <div class="row">
+                                <div class="col-md-3">
+                                  <form action="LugaresEditarForm.php" method="POST">
+                                  <input type="hidden" name="idlugar" value="<?php echo $row['idLugar']; ?>"></input>
+                                  <button type="submit" class="btn btn-success btn btn-sm" id="Modificar"><i class="fa fa-pencil-square-o"></i></button>
+                                  </form>
+                                </div>
+                                <hr>
+                                <div class="col-md-7">
+                                  <form action="eliminarLugardb.php" method="POST">
+                                    <input type="hidden" name="idlugar" value="<?php echo $row['idLugar']; ?>"></input>
+                                    <button type="submit" class="btn btn-danger btn btn-sm" id="Eliminar"><i class="fa fa-trash"></i></button>
+                                  </form>
+                                </div>
+                              </div>
+
+                            </td>
+
+                          </tr>
+                    <?php
+                          $indice++;
+                        }
+                      }
+                    ?>
+                  </tbody>
+                </table>
               </div>
-            </div>
-            <div class="col-md-9">
-              <div id="calendar"></div>
             </div>
           </div>
         </div>
@@ -115,71 +159,25 @@
     </main>
     <!-- Essential javascripts for application to work-->
     <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/jquery.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/main.js"></script>
     <!-- The javascript plugin to display page loading on top-->
     <script src="js/plugins/pace.min.js"></script>
     <!-- Page specific javascripts-->
-    <script type="text/javascript" src="js/plugins/moment.min.js"></script>
-    <script type="text/javascript" src="js/plugins/jquery-ui.custom.min.js"></script>
-    <script type="text/javascript" src="js/plugins/fullcalendar.min.js"></script>
-    <script src="js/es.js"></script>
-    <script type="text/javascript">
-      $(document).ready(function() {
-
-        $('#external-events .fc-event').each(function() {
-
-          // store data so the calendar knows to render an event upon drop
-          $(this).data('event', {
-            title: $.trim($(this).text()), // use the element's text as the event title
-            stick: true // maintain when user navigates (see docs on the renderEvent method)
-          });
-
-          // make the event draggable using jQuery UI
-          $(this).draggable({
-            zIndex: 999,
-            revert: true,      // will cause the event to go back to its
-            revertDuration: 0  //  original position after the drag
-          });
-
-        });
-
-        $('#calendar').fullCalendar({
-          header: {
-            left: 'prev,next today',
-            center: 'title',
-            right: 'month,agendaWeek,agendaDay',
-          },
-          monthNames: ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
-          monthNamesShort: ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'],
-          dayNames: ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'],
-          dayNamesShort: ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'],
-          editable: true,
-          droppable: true, // this allows things to be dropped onto the calendar
-          drop: function() {
-            // is the "remove after drop" checkbox checked?
-            if ($('#drop-remove').is(':checked')) {
-              // if so, remove the element from the "Draggable Events" list
-              $(this).remove();
-            }
-          },
-
-        });
-
-
-      });
-    </script>
+    <!-- Data table plugin-->
+    <script type="text/javascript" src="js/plugins/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="js/plugins/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript">$('#sampleTable').DataTable();</script>
     <!-- Google analytics script-->
     <script type="text/javascript">
       if(document.location.hostname == 'pratikborsadiya.in') {
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-        ga('create', 'UA-72504830-1', 'auto');
-        ga('send', 'pageview');
+      	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      	ga('create', 'UA-72504830-1', 'auto');
+      	ga('send', 'pageview');
       }
     </script>
   </body>
