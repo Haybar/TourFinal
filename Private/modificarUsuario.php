@@ -56,59 +56,45 @@
       <ul class="app-menu">
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-list"></i><span class="app-menu__label">Control de Usuario</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
-            <li><a class="treeview-item" href="tablaUsuarios.php"><i class="icon fa fa-users"></i></i> Usuarios </a></li>
-          </ul>
-        </li>
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-list"></i><span class="app-menu__label">Control de Lugares</span><i class="treeview-indicator fa fa-angle-right"></i></a>
-          <ul class="treeview-menu">
-            <li><a class="treeview-item" href="Lugares.html"><i class="icon fa fa-location-arrow"></i></i> Registro Lugares </a></li>
+            <li><a class="treeview-item" href="data-table-Usuario.php"><i class="icon fa fa-users"></i></i> Usuarios </a></li>
           </ul>
         </li>
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-list"></i></i><span class="app-menu__label">Atractivo Turistico</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
-            <li><a class="treeview-item" href="Balnearios.html"><i class="icon fa fa-shower"></i> Balnearios </a></li>
-            <li><a class="treeview-item" href="CentroCultural.html" target="_blank" rel="noopener"><i class="icon fa fa-home"></i> Centros Culturales </a></li>
-            <li><a class="treeview-item" href="Cines.html"><i class="icon fa fa-film"></i> Cines </a></li>
-            <li><a class="treeview-item" href="Plazas.html" target="_blank" rel="noopener"><i class="icon fa fa-circle-o"></i> Plazas </a></li>
-            <li><a class="treeview-item" href="Parques.html"><i class="icon fa fa-tree"></i> Parques </a></li>
+            <li><a class="treeview-item" href="data-table-Balneario.php"><i class="icon fa fa-shower"></i> Balnearios </a></li>
+            <li><a class="treeview-item" href="data-table-CentroCultural.php" rel="noopener"><i class="icon fa fa-home"></i> Centros Culturales </a></li>
+            <li><a class="treeview-item" href="data-table-Cine.php"><i class="icon fa fa-film"></i> Cines </a></li>
+            <li><a class="treeview-item" href="data-table-Plaza.php"  rel="noopener"><i class="icon fa fa-circle-o"></i> Plazas </a></li>
+            <li><a class="treeview-item" href="data-table-Parques.php"><i class="icon fa fa-tree"></i> Parques </a></li>
           </ul>
         </li>
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-list"></i><span class="app-menu__label">Sitio Turistico</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
-            <li><a class="treeview-item" href="Iglesias.html"><i class="icon fas fa-church"></i> Iglesias </a></li>
-            <li><a class="treeview-item" href="Museos.html" target="_blank" rel="noopener"><i class="icon fa fa-building-o"></i> Museos </a></li>
+            <li><a class="treeview-item" href="data-table-Iglesia.php"><i class="icon fas fa-church"></i> Iglesias </a></li>
+            <li><a class="treeview-item" href="data-table-Museo.php"  rel="noopener"><i class="icon fa fa-building-o"></i> Museos </a></li>
           </ul>
         </li>
-        <li><a class="app-menu__item" href="Restaurantes.html"><i class="app-menu__icon fa fa-cutlery"></i><span class="app-menu__label">Restaurantes</span></a></li>
-        <li><a class="app-menu__item" href="Universidades.html"><i class="app-menu__icon fa fa-university"></i><span class="app-menu__label">Universidades</span></a></li>
-        <li><a class="app-menu__item" href="Instituciones.html"><i class="app-menu__icon fa fa-briefcase"></i><span class="app-menu__label">Instituciones</span></a></li>
+        <li><a class="app-menu__item" href="data-table-Restaurante.php"><i class="app-menu__icon fa fa-cutlery"></i><span class="app-menu__label">Restaurantes</span></a></li>
+        <li><a class="app-menu__item" href="data-table-Universidad.php"><i class="app-menu__icon fa fa-university"></i><span class="app-menu__label">Universidades</span></a></li>
+        <li><a class="app-menu__item" href="data-table-Institucion.php"><i class="app-menu__icon fa fa-briefcase"></i><span class="app-menu__label">Instituciones</span></a></li>
+        <li><a class="app-menu__item" href="Eventos.php"><i class="app-menu__icon fa fa-calendar"></i><span class="app-menu__label">Eventos</span></a></li>
     </aside>
     <main class="app-content">
-      <div class="app-title">
-        <div>
-          <h1><i class="fa fa-edit"></i> Usuario</h1>
-          <p>Modificar</p>
-        </div>
-        <ul class="app-breadcrumb breadcrumb">
-          <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-          <li class="breadcrumb-item">registro</li>
-          <li class="breadcrumb-item"><a href="#">Lugar</a></li>
-        </ul>
-      </div>
+
       <div class="row">
         <div class="col-md-8">
           <div class="tile">
             <div class="tile-body">
               <?php
                 include("config.php");
-                $idusuario=$_POST['idusuario'];         
+                $idusuario=$_POST['idusuario'];
 
                 $sql="SELECT * FROM Usuario WHERE idUsuario='$idusuario';";
                 $execonsulta=$mysqli->query($sql);
 
                 if(mysqli_num_rows($execonsulta)>0)
                 {
-                  while ($row=mysqli_fetch_array($execonsulta)) 
+                  while ($row=mysqli_fetch_array($execonsulta))
                   {
                     $nombres=$row['nombres'];
                     $primerApellido=$row['primerApellido'];
@@ -134,7 +120,7 @@
                       <input class="form-control" name="foto" type="file" value="<?php echo $foto;?>">
                     </div>
                   </div>
-                </div>                
+                </div>
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
@@ -148,7 +134,7 @@
                       <input class="form-control" name="segundoApellido" type="text" placeholder="Ingrese su Apellido Materno" value="<?php echo $segundoApellido;?>">
                     </div>
                   </div>
-                </div>                
+                </div>
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
@@ -162,11 +148,11 @@
                       <input class="form-control" name="tipo" type="text" placeholder="Ingrese el Tipo de Usuario"
                       value="<?php echo $tipo;?>">
                     </div>
-                  </div>                  
+                  </div>
                 </div>
                 <div class="tile-footer" align=center>
                   <button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i>Guardar</button>&nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" href="data-table-Usuario.php"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cancelar</a>
-                </div>               
+                </div>
               </form>
             </div>
           </div>

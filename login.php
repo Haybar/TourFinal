@@ -1,19 +1,21 @@
 <?php
-
+include'config.php';
+session_start();
 if (isset($_POST["ingresar"])) {
     $Email=$_POST['Email'];
     $Password=$_POST['Password'];
-        include'config.php';
+        
         $sql="SELECT * FROM Usuario WHERE email='$Email' AND password='$Password'";
         $execonsulta=$mysqli->query($sql) or die ("Error al comprobar usuario: ".mysqli_error($mysqli));
         $row=mysqli_fetch_array($execonsulta);
         
         if(mysqli_num_rows($execonsulta) > 0)
-        {    
+        {   
+            $_SESSION['idUsuario']=$row['id'];
             if ($row['tipo'] == 'turista') {
                 echo '<script>';
                     echo 'alert("Bienvenido!!");';
-                    echo 'window.location.href="Public/index.html";';
+                    echo 'window.location.href="Public/home.php";';
                 echo '</script>';
             }
             else 

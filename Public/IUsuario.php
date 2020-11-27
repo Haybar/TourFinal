@@ -92,7 +92,7 @@ session_start();
   					<nav class="nav-Admin">
   						<ul class="menu-Admin">
         					<li><a href="configuracionUsuario.php">Ajustes</a></li>
-        					<li><a href="index.html">Salir</a></li>
+        					<li><a href="logout.php">Salir</a></li>
       					</ul>
   					</nav>
     			</div>

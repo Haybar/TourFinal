@@ -1,10 +1,10 @@
 <?php
 session_start();
 if (!isset($_SESSION['id'])){
-header('location:index.html');
+header('location:home.php');
 }
-$idusuario = $_SESSION['id'];
-$sql="SELECT * FROM usuarios WHERE idUsuario = '$idusuario';";
+$idUsuario = $_SESSION['id'];
+$sql="SELECT * FROM Usuario WHERE idUsuario = '$idusuario';";
 $execonsulta=$mysqli->query($sql);
 $row=mysqli_fetch_array($execonsulta);
 //$username = $row['apellidoPaterno']." ".$row['apellidoMaterno']." ".$row['nombres'];

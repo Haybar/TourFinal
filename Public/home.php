@@ -1,3 +1,7 @@
+<?php include('../config.php');
+include('../session.php');
+session_start();
+ ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -55,6 +59,7 @@
 					</ul>
 				</li>
 				<li><a href="IUsuario.php">Ajustes<span></span></a></li>
+				<li><a href="#">Bienvenido <?php echo $_SESSION['nombres'];?></a></li>
 			</ul>
 			<!-- 
 			<div class="header-right">

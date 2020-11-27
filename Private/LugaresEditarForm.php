@@ -22,6 +22,18 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <!-- Font-icon css-->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCP3eTt6XMGq757Iu0ZBK-eEeEAEQZRGJ4&callback=initMap&libraries=&v=weekly">  
+    </script>
+    <style type="text/css">
+      /* Set the size of the div element that contains the map */
+      #map {
+        height: 350px;
+        /* The height is 400 pixels */
+        width: 100%;
+        /* The width is the width of the web page */
+      }
+    </style>
   </head>
   <body class="app sidebar-mini">
     <!-- Navbar-->
@@ -56,59 +68,45 @@
       <ul class="app-menu">
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-list"></i><span class="app-menu__label">Control de Usuario</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
-            <li><a class="treeview-item" href="tablaUsuarios.php"><i class="icon fa fa-users"></i></i> Usuarios </a></li>
-          </ul>
-        </li>
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-list"></i><span class="app-menu__label">Control de Lugares</span><i class="treeview-indicator fa fa-angle-right"></i></a>
-          <ul class="treeview-menu">
-            <li><a class="treeview-item" href="Lugares.html"><i class="icon fa fa-location-arrow"></i></i> Registro Lugares </a></li>
+            <li><a class="treeview-item" href="data-table-Usuario.php"><i class="icon fa fa-users"></i></i> Usuarios </a></li>
           </ul>
         </li>
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-list"></i></i><span class="app-menu__label">Atractivo Turistico</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
-            <li><a class="treeview-item" href="Balnearios.html"><i class="icon fa fa-shower"></i> Balnearios </a></li>
-            <li><a class="treeview-item" href="CentroCultural.html" target="_blank" rel="noopener"><i class="icon fa fa-home"></i> Centros Culturales </a></li>
-            <li><a class="treeview-item" href="Cines.html"><i class="icon fa fa-film"></i> Cines </a></li>
-            <li><a class="treeview-item" href="Plazas.html" target="_blank" rel="noopener"><i class="icon fa fa-circle-o"></i> Plazas </a></li>
-            <li><a class="treeview-item" href="Parques.html"><i class="icon fa fa-tree"></i> Parques </a></li>
+            <li><a class="treeview-item" href="data-table-Balneario.php"><i class="icon fa fa-shower"></i> Balnearios </a></li>
+            <li><a class="treeview-item" href="data-table-CentroCultural.php" rel="noopener"><i class="icon fa fa-home"></i> Centros Culturales </a></li>
+            <li><a class="treeview-item" href="data-table-Cine.php"><i class="icon fa fa-film"></i> Cines </a></li>
+            <li><a class="treeview-item" href="data-table-Plaza.php"  rel="noopener"><i class="icon fa fa-circle-o"></i> Plazas </a></li>
+            <li><a class="treeview-item" href="data-table-Parques.php"><i class="icon fa fa-tree"></i> Parques </a></li>
           </ul>
         </li>
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-list"></i><span class="app-menu__label">Sitio Turistico</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
-            <li><a class="treeview-item" href="Iglesias.html"><i class="icon fas fa-church"></i> Iglesias </a></li>
-            <li><a class="treeview-item" href="Museos.html" target="_blank" rel="noopener"><i class="icon fa fa-building-o"></i> Museos </a></li>
+            <li><a class="treeview-item" href="data-table-Iglesia.php"><i class="icon fas fa-church"></i> Iglesias </a></li>
+            <li><a class="treeview-item" href="data-table-Museo.php"  rel="noopener"><i class="icon fa fa-building-o"></i> Museos </a></li>
           </ul>
         </li>
-        <li><a class="app-menu__item" href="Restaurantes.html"><i class="app-menu__icon fa fa-cutlery"></i><span class="app-menu__label">Restaurantes</span></a></li>
-        <li><a class="app-menu__item" href="Universidades.html"><i class="app-menu__icon fa fa-university"></i><span class="app-menu__label">Universidades</span></a></li>
-        <li><a class="app-menu__item" href="Instituciones.html"><i class="app-menu__icon fa fa-briefcase"></i><span class="app-menu__label">Instituciones</span></a></li>
+        <li><a class="app-menu__item" href="data-table-Restaurante.php"><i class="app-menu__icon fa fa-cutlery"></i><span class="app-menu__label">Restaurantes</span></a></li>
+        <li><a class="app-menu__item" href="data-table-Universidad.php"><i class="app-menu__icon fa fa-university"></i><span class="app-menu__label">Universidades</span></a></li>
+        <li><a class="app-menu__item" href="data-table-Institucion.php"><i class="app-menu__icon fa fa-briefcase"></i><span class="app-menu__label">Instituciones</span></a></li>
+        <li><a class="app-menu__item" href="Eventos.php"><i class="app-menu__icon fa fa-calendar"></i><span class="app-menu__label">Eventos</span></a></li>
     </aside>
     <main class="app-content">
-      <div class="app-title">
-        <div>
-          <h1><i class="fa fa-edit"></i> Lugares</h1>
-          <p>Registro</p>
-        </div>
-        <ul class="app-breadcrumb breadcrumb">
-          <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-          <li class="breadcrumb-item">registro</li>
-          <li class="breadcrumb-item"><a href="#">Lugar</a></li>
-        </ul>
-      </div>
+
       <div class="row">
         <div class="col-md-8">
           <div class="tile">
             <div class="tile-body">
               <?php
                 include("config.php");
-                $idlugar=$_POST['idlugar'];         
+                $idlugar=$_POST['idlugar'];
 
                 $sql="SELECT * FROM Lugar WHERE idLugar='$idlugar';";
                 $execonsulta=$mysqli->query($sql);
 
                 if(mysqli_num_rows($execonsulta)>0)
                 {
-                  while ($row=mysqli_fetch_array($execonsulta)) 
+                  while ($row=mysqli_fetch_array($execonsulta))
                   {
                     $nombreLugar=$row['nombreLugar'];
                     $descripcion=$row['descripcion'];
@@ -147,15 +145,15 @@
                   <div class="col-md-6">
                     <div class="form-group">
                       <label class="control-label">Precio Entrada</label>
-                      <input class="form-control" name="entrada" type="text" placeholder="Ingrese el Horario" 
+                      <input class="form-control" name="entrada" type="text" placeholder="Ingrese el Horario"
                       value="<?php echo $entrada;?>">
                     </div>
-                  </div>                  
+                  </div>
                 </div>
                 <div class="form-group">
                   <label class="control-label">Foto</label>
                   <input class="form-control" name="foto" type="file" value="<?php echo $foto;?>">
-                </div>                
+                </div>
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
@@ -172,21 +170,24 @@
                     </div>
                   </div>
                 </div>
-                  
+
                 <div class="form-group">
                   <label class="control-label">Mapa</label>
                   <br>
-                  <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d30458.427377620897!2d-66.1459570801025!3d-17.39722040005723!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2sbo!4v1605640227160!5m2!1ses!2sbo" width="100%" height="350" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                  <div id="map">
+
+                  </div>
+
                   <div class="row">
                     <div class="col-md-6">
                       <label class="control-label">Latitud</label>
-                      <input class="form-control" name="latitud" type="text" placeholder="Ingrese la Latitud" value="<?php echo $latitud;?>">
+                      <input class="form-control" name="latitud" type="text" placeholder="Ingrese la Latitud" id="txtLat">
                     </div>
                     <div class="col-md-6">
                       <label class="control-label">Logitud</label>
-                      <input class="form-control" name="longitud" type="text" placeholder="Ingrese la Longitud" value="<?php echo $longitud;?>">
+                      <input class="form-control" name="longitud" type="text" placeholder="Ingrese la Logitud" id="txtLng">
                     </div>
-                  </div>                  
+                  </div>
                 </div>
                 <div class="form-group">
                   <label for="exampleTextarea">Reseña Historica</label>
@@ -196,7 +197,7 @@
                 </div>
                 <div class="tile-footer" align=center>
                   <button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i>Guardar</button>&nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" href="data-table-Parques.php"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cancelar</a>
-                </div>               
+                </div>
               </form>
             </div>
           </div>
@@ -223,5 +224,49 @@
       	ga('send', 'pageview');
       }
     </script>
+    <script type="text/javascript" src=https://maps.googleapis.com/maps/api/js?key=AIzaSyCP3eTt6XMGq757Iu0ZBK-eEeEAEQZRGJ4&callback=initMap&libraries=&v=weekly></script>
+    <script>
+        var vMarker
+        var map
+            map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 13,
+                center: new google.maps.LatLng(-17.39722040005723, -66.1459570801025),
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            });
+            vMarker = new google.maps.Marker({
+                position: new google.maps.LatLng(-17.39722040005723, -66.1459570801025),
+                draggable: true
+            });
+            google.maps.event.addListener(vMarker, 'dragend', function (evt) {
+                $("#txtLat").val(evt.latLng.lat().toFixed(6));
+                $("#txtLng").val(evt.latLng.lng().toFixed(6));
+
+                map.panTo(evt.latLng);
+            });
+            map.setCenter(vMarker.position);
+            vMarker.setMap(map);
+
+            $("#txtCiudad, #txtEstado, #txtDireccion").change(function () {
+                movePin();
+            });
+
+            function movePin() {
+            var geocoder = new google.maps.Geocoder();
+            var textSelectM = $("#txtCiudad").text();
+            var textSelectE = $("#txtEstado").val();
+            var inputAddress = $("#txtDireccion").val() + ' ' + textSelectM + ' ' + textSelectE;
+            geocoder.geocode({
+                "address": inputAddress
+            }, function (results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    vMarker.setPosition(new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng()));
+                    map.panTo(new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng()));
+                    $("#txtLat").val(results[0].geometry.location.lat());
+                    $("#txtLng").val(results[0].geometry.location.lng());
+                }
+
+            });
+        }
+        </script>
   </body>
 </html>

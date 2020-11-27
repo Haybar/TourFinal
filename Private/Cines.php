@@ -22,6 +22,18 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <!-- Font-icon css-->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCP3eTt6XMGq757Iu0ZBK-eEeEAEQZRGJ4&callback=initMap&libraries=&v=weekly">  
+    </script>
+    <style type="text/css">
+      /* Set the size of the div element that contains the map */
+      #map {
+        height: 350px;
+        /* The height is 400 pixels */
+        width: 100%;
+        /* The width is the width of the web page */
+      }
+    </style>
   </head>
   <body class="app sidebar-mini">
     <!-- Navbar-->
@@ -85,8 +97,9 @@
         <div class="col-lg-12">
             <div class="bs-component">
               <ul class="nav nav-tabs">
-                <li class="nav-item"><a class="nav-link active" href="data-table-Cine.php">Inicio</a></li>
-                <li class="nav-item"><a class="nav-link"  href="Cines.php">Profile</a></li>
+                <li class="nav-item"><a class="nav-link"  href="home.html">Pagina Principal</a></li>
+                <li class="nav-item"><a class="nav-link " href="data-table-Cine.php">Tabla</a></li>
+                <li class="nav-item"><a class="nav-link active"  href="Cines.php">Registro</a></li>
               </ul>
             </div>
           </div>
@@ -97,7 +110,7 @@
             <div class="tile-body">
               <form class="for-balneario" action="registrarLugarbd.php" method="POST">
                 <div class="form-group">
-                  <label class="control-label">Nombre del Lugar</label>
+                  <label class="control-label">Nombre del Cine</label>
                   <input class="form-control" name="nombreLugar" type="text" placeholder="Ingrese el nombre del Lugar">
                 </div>
                 <div class="form-group">
@@ -134,7 +147,7 @@
                     <div class="form-group">
                       <label for="exampleSelect1">Categoria</label>
                       <select class="form-control" id="exampleSelect1" name="categoria">
-                        <option value="0">Seleccionar:</option>
+                        
                         <?php
                           $query = $mysqli -> query ("SELECT * FROM Categoria WHERE idCategoria='2'");
                           while ($valores = mysqli_fetch_array($query)) {
@@ -149,15 +162,18 @@
                 <div class="form-group">
                   <label class="control-label">Mapa</label>
                   <br>
-                  <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d30458.427377620897!2d-66.1459570801025!3d-17.39722040005723!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2sbo!4v1605640227160!5m2!1ses!2sbo" width="100%" height="350" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                  <div id="map">
+
+                  </div>
+
                   <div class="row">
                     <div class="col-md-6">
                       <label class="control-label">Latitud</label>
-                      <input class="form-control" name="latitud" type="text" placeholder="Ingrese la Latitud">
+                      <input class="form-control" name="latitud" type="text" placeholder="Ingrese la Latitud" id="txtLat">
                     </div>
                     <div class="col-md-6">
                       <label class="control-label">Logitud</label>
-                      <input class="form-control" name="longitud" type="text" placeholder="Ingrese la Logitud">
+                      <input class="form-control" name="longitud" type="text" placeholder="Ingrese la Logitud" id="txtLng">
                     </div>
                   </div>
                 </div>
@@ -196,5 +212,50 @@
       	ga('send', 'pageview');
       }
     </script>
+    <!-- mapas recuperacion de datos-->
+    <script type="text/javascript" src=https://maps.googleapis.com/maps/api/js?key=AIzaSyCP3eTt6XMGq757Iu0ZBK-eEeEAEQZRGJ4&callback=initMap&libraries=&v=weekly></script>
+    <script>
+        var vMarker
+        var map
+            map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 13,
+                center: new google.maps.LatLng(-17.39722040005723, -66.1459570801025),
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            });
+            vMarker = new google.maps.Marker({
+                position: new google.maps.LatLng(-17.39722040005723, -66.1459570801025),
+                draggable: true
+            });
+            google.maps.event.addListener(vMarker, 'dragend', function (evt) {
+                $("#txtLat").val(evt.latLng.lat().toFixed(6));
+                $("#txtLng").val(evt.latLng.lng().toFixed(6));
+
+                map.panTo(evt.latLng);
+            });
+            map.setCenter(vMarker.position);
+            vMarker.setMap(map);
+
+            $("#txtCiudad, #txtEstado, #txtDireccion").change(function () {
+                movePin();
+            });
+
+            function movePin() {
+            var geocoder = new google.maps.Geocoder();
+            var textSelectM = $("#txtCiudad").text();
+            var textSelectE = $("#txtEstado").val();
+            var inputAddress = $("#txtDireccion").val() + ' ' + textSelectM + ' ' + textSelectE;
+            geocoder.geocode({
+                "address": inputAddress
+            }, function (results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    vMarker.setPosition(new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng()));
+                    map.panTo(new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng()));
+                    $("#txtLat").val(results[0].geometry.location.lat());
+                    $("#txtLng").val(results[0].geometry.location.lng());
+                }
+
+            });
+        }
+        </script>
   </body>
 </html>

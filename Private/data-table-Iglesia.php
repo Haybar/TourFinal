@@ -82,8 +82,9 @@
         <div class="col-lg-12">
             <div class="bs-component">
               <ul class="nav nav-tabs">
-                <li class="nav-item"><a class="nav-link active"  href="data-table-Iglesia.php">Inicio</a></li>
-                <li class="nav-item"><a class="nav-link"  href="Iglesia.php">Profile</a></li>
+                <li class="nav-item"><a class="nav-link"  href="home.html">Pagina Principal</a></li>
+                <li class="nav-item"><a class="nav-link active"  href="data-table-Iglesia.php">Table</a></li>
+                <li class="nav-item"><a class="nav-link"  href="Iglesia.php">Registro</a></li>
               </ul>
             </div>
           </div>
