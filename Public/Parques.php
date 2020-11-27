@@ -90,32 +90,30 @@
 
     <!-- Galery Container -->
 
-    <div class="container">
+    <div class="container mt-3">
         <br>
     <div class="galery">
             <div class="row">
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <section>
-                        <?php
-                        $sql = "SELECT idLugar,foto,nombreLugar,descripcion,direccion,horarioAtencion FROM `Lugar` WHERE Categoria_idCategoria='5' AND estado='1';";
-                        $execonsulta=$mysqli->query($sql);
-                        while( $row=mysqli_fetch_array($execonsulta) ) {
-                        ?>
+                
+                <?php
+                $sql = "SELECT idLugar,foto,nombreLugar,descripcion,direccion,horarioAtencion FROM `Lugar` WHERE Categoria_idCategoria='5' AND estado='1';";
+                $execonsulta=$mysqli->query($sql);
+                while( $row=mysqli_fetch_array($execonsulta) ) {
+                ?>
+                    <div class="col-lg-4 col-md-6 col-sm-12">
                         <div class="card">
                             <img class="card-img-top" src="<?php echo $row[1]; ?>" alt="Card image cap">
                             <div class="card-body">
                                 <h5 class="card-title"><a href="#"><?php echo $row[2]; ?></a></h5>
                                 <p class="card-text"><?php echo $row[3]; ?></p>
                                 <form action="InfoParque.php" method="POST">
-                                  <input type="hidden" name="idlugar" value="<?php echo $row['idLugar']; ?>"></input>
-                                  <button type="submit" class="btn btn-success btn btn-sm" id="Ver">Saber más</button>
+                                    <input type="hidden" name="idlugar" value="<?php echo $row['idLugar']; ?>"></input>
+                                    <button type="submit" class="btn btn-success btn btn-sm" id="Ver">Saber más</button>
                                 </form>
-                            </div>
                         </div>
-                        <?php } ?>
-                    </section>
-                </div>
-                
+                        </div>
+                    </div>
+                <?php } ?>
                 </div>
             </div>
         </div>
