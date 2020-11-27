@@ -1,7 +1,7 @@
 <?php
 include'config.php';
-session_start();
 if (isset($_POST["ingresar"])) {
+    session_start();
     $Email=$_POST['Email'];
     $Password=$_POST['Password'];
         
@@ -9,9 +9,9 @@ if (isset($_POST["ingresar"])) {
         $execonsulta=$mysqli->query($sql) or die ("Error al comprobar usuario: ".mysqli_error($mysqli));
         $row=mysqli_fetch_array($execonsulta);
         
-        if(mysqli_num_rows($execonsulta) > 0)
+        if($row)
         {   
-            $_SESSION['idUsuario']=$row['id'];
+            $_SESSION['idUsuario']=$row['idUsuario'];
             if ($row['tipo'] == 'turista') {
                 echo '<script>';
                     echo 'alert("Bienvenido!!");';

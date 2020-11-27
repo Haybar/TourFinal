@@ -1,7 +1,4 @@
-<?php include('../config.php');
-include('../session.php');
-session_start();
- ?>
+<?php include('../config.php'); ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -30,6 +27,10 @@ session_start();
 
 </head>
 <body>
+	<?php 
+		session_start();
+		$idUsuario=$_SESSION['idUsuario'];
+	?>
 	<!-- Page Preloder -->
 	<div id="preloder">
 		<div class="loader"></div>
@@ -50,7 +51,7 @@ session_start();
 						<li><a href="index.html">Centros Culturales</a></li>
 						<li><a href="index.html">Cines/Teatros</a></li>
 						<li><a href="index.html">Plazas</a></li>
-						<li><a href="index.html">Parques</a></li>
+						<li><a href="Parques.php">Parques</a></li>
 						<li><a href="provincias.html">Iglesias</a></li>
 						<li><a href="index.html">Museos</a></li>
 						<li><a href="experiencias.html">Restaurantes</a></li>
@@ -59,7 +60,7 @@ session_start();
 					</ul>
 				</li>
 				<li><a href="IUsuario.php">Ajustes<span></span></a></li>
-				<li><a href="#">Bienvenido <?php echo $_SESSION['nombres'];?></a></li>
+				<li><a href="#">Bienvenido</a></li>
 			</ul>
 			<!-- 
 			<div class="header-right">
@@ -118,6 +119,7 @@ session_start();
 			<a href="index.html" class="footer-logo">
 				<img src="img/logoBC.png" alt="">
 			</a>
+			<h1> Bienvenido: <?php echo $idUsuario;?></h1>
 			<!-- 
 			<div class="row">
 				<div class="col-lg-3 col-sm-6">
