@@ -1,6 +1,5 @@
           <?php 
           include("config.php");
-          $idlugar=$_POST['idlugar'];
           $nombreLugar=$_POST['nombreLugar'];
           $descripcion=$_POST['descripcion'];
           $direccion=$_POST['direccion'];
@@ -11,21 +10,23 @@
           $latitud=$_POST['latitud'];
           $longitud=$_POST['longitud'];
           $reseña=$_POST['reseña'];
+                    
+          //$sql= "INSERT INTO lugar SET nombreLugar='$nombreLugar',direccion='$direccion', horarioAtencion='$horarioAtencion', foto='$foto';";
+          $sql = "INSERT INTO Lugar (nombreLugar, descripcion, direccion, horarioAtencion, entrada, foto, Categoria_idCategoria, latitud, longitud, reseña) VALUES ('$nombreLugar', '$descripcion', '$direccion', '$horarioAtencion', '$entrada', '$foto', '$categoria', '$latitud', '$longitud', '$reseña');";
 
-          $sql="UPDATE Lugar SET nombreLugar='$nombreLugar', descripcion='$descripcion', direccion='$direccion', horarioAtencion='$horarioAtencion', entrada='$entrada', foto='$foto', Categoria_idCategoria='$categoria', latitud='$latitud', longitud='$longitud', reseña='$reseña' WHERE idLugar='$idlugar';";
-
-
+          
           if($mysqli->query($sql))
             {
+              //echo "Registrado";
               echo '<script>';
-                echo 'alert("Cambios Guardados con exito!!");';
+                echo 'alert("Registrado con exito!!");';
                 echo 'window.location.href="data-table-Parques.php";';
               echo '</script>';
             }
             else
               {
               echo '<script>';
-                echo 'alert("No se pudo guardar los cambios!!");';
+                echo 'alert("NO Registrado!!");';
                 echo 'window.location.href="data-table-Parques.php";';
               echo '</script>';
             }

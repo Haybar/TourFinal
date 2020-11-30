@@ -181,11 +181,11 @@
                   <div class="row">
                     <div class="col-md-6">
                       <label class="control-label">Latitud</label>
-                      <input class="form-control" name="latitud" type="text" placeholder="Ingrese la Latitud" id="txtLat">
+                      <input class="form-control" name="latitud" type="text" placeholder="Ingrese la Latitud" id="txtLat" value="<?php echo $latitud; ?>">
                     </div>
                     <div class="col-md-6">
                       <label class="control-label">Logitud</label>
-                      <input class="form-control" name="longitud" type="text" placeholder="Ingrese la Logitud" id="txtLng">
+                      <input class="form-control" name="longitud" type="text" placeholder="Ingrese la Logitud" id="txtLng" value="<?php echo $longitud; ?>">
                     </div>
                   </div>
                 </div>

@@ -76,80 +76,91 @@
             <li><a class="treeview-item" href="data-table-Balneario.php"><i class="icon fa fa-shower"></i> Balnearios </a></li>
             <li><a class="treeview-item" href="data-table-CentroCultural.php" rel="noopener"><i class="icon fa fa-home"></i> Centros Culturales </a></li>
             <li><a class="treeview-item" href="data-table-Cine.php"><i class="icon fa fa-film"></i> Cines </a></li>
-            <li><a class="treeview-item" href="data-table-Plaza.php" rel="noopener"><i class="icon fa fa-circle-o"></i> Plazas </a></li>
+            <li><a class="treeview-item" href="data-table-Plaza.php"  rel="noopener"><i class="icon fa fa-circle-o"></i> Plazas </a></li>
             <li><a class="treeview-item" href="data-table-Parques.php"><i class="icon fa fa-tree"></i> Parques </a></li>
           </ul>
         </li>
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-list"></i><span class="app-menu__label">Sitio Turistico</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
             <li><a class="treeview-item" href="data-table-Iglesia.php"><i class="icon fas fa-church"></i> Iglesias </a></li>
-            <li><a class="treeview-item" href="data-table-Museo.php" rel="noopener"><i class="icon fa fa-building-o"></i> Museos </a></li>
+            <li><a class="treeview-item" href="data-table-Museo.php"  rel="noopener"><i class="icon fa fa-building-o"></i> Museos </a></li>
           </ul>
         </li>
         <li><a class="app-menu__item" href="data-table-Restaurante.php"><i class="app-menu__icon fa fa-cutlery"></i><span class="app-menu__label">Restaurantes</span></a></li>
         <li><a class="app-menu__item" href="data-table-Universidad.php"><i class="app-menu__icon fa fa-university"></i><span class="app-menu__label">Universidades</span></a></li>
         <li><a class="app-menu__item" href="data-table-Institucion.php"><i class="app-menu__icon fa fa-briefcase"></i><span class="app-menu__label">Instituciones</span></a></li>
         <li><a class="app-menu__item" href="Eventos.php"><i class="app-menu__icon fa fa-calendar"></i><span class="app-menu__label">Eventos</span></a></li>
-      </ul>
     </aside>
     <main class="app-content">
-      <div class="app-title">
-        <div class="col-lg-12">
-            <div class="bs-component">
-              <ul class="nav nav-tabs">
-                <li class="nav-item"><a class="nav-link"  href="home.html">Pagina Principal</a></li>
-                <li class="nav-item"><a class="nav-link "  href="data-table-Museo.php">Tabla</a></li>
-                <li class="nav-item"><a class="nav-link active"  href="Museo.php">Registro</a></li>
-              </ul>
-            </div>
-          </div>
-      </div>
+
       <div class="row">
         <div class="col-md-8">
           <div class="tile">
             <div class="tile-body">
-              <form class="for-balneario" action="registrarMuseobd.php" method="POST">
+              <?php
+                include("config.php");
+                $idlugar=$_POST['idlugar'];
+
+                $sql="SELECT * FROM Lugar WHERE idLugar='$idlugar';";
+                $execonsulta=$mysqli->query($sql);
+
+                if(mysqli_num_rows($execonsulta)>0)
+                {
+                  while ($row=mysqli_fetch_array($execonsulta))
+                  {
+                    $nombreLugar=$row['nombreLugar'];
+                    $descripcion=$row['descripcion'];
+                    $direccion=$row['direccion'];
+                    $horarioAtencion=$row['horarioAtencion'];
+                    $entrada=$row['entrada'];
+                    $foto=$row['foto'];
+                    $categoria=$row['Categoria_idCategoria'];
+                    $latitud=$row['latitud'];
+                    $longitud=$row['longitud'];
+                    $reseña=$row['reseña'];
+                  }
+                }
+              ?>
+              <form class="for-balneario" action="modificarRestaurantebd.php" method="POST">
+                <input type="hidden" name="idlugar" class="form-control" value="<?php echo $idlugar; ?>"></input>
                 <div class="form-group">
-                  <label class="control-label">Nombre del Museo</label>
-                  <input class="form-control" name="nombreLugar" type="text" placeholder="Ingrese el nombre del Lugar">
+                  <label class="control-label">Nombre del Lugar</label>
+                  <input class="form-control" name="nombreLugar" type="text" placeholder="Ingrese el nombre del Lugar" value="<?php echo $nombreLugar;?>">
                 </div>
                 <div class="form-group">
                   <label class="control-label">Descripción</label>
-                  <input class="form-control" name="descripcion" type="text" placeholder="Ingrese una corta Descripción">
+                  <input class="form-control" name="descripcion" type="text" placeholder="Ingrese una corta Descripción" value="<?php echo $descripcion;?>">
                 </div>
                 <div class="form-group">
                   <label class="control-label">Dirección</label>
-                  <input class="form-control" name="direccion" type="text" placeholder="Ingrese La Dirección">
+                  <input class="form-control" name="direccion" type="text" placeholder="Ingrese La Dirección" value="<?php echo $direccion;?>">
                 </div>
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
                       <label class="control-label">Horario</label>
-                      <input class="form-control" name="horarioAtencion" type="text" placeholder="Ingrese el Horario">
+                      <input class="form-control" name="horarioAtencion" type="text" placeholder="Ingrese el Horario" value="<?php echo $horarioAtencion;?>">
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
                       <label class="control-label">Precio Entrada</label>
-                      <input class="form-control" name="entrada" type="text" placeholder="Ingrese el Precio de la Entrada">
+                      <input class="form-control" name="entrada" type="text" placeholder="Ingrese el Horario"
+                      value="<?php echo $entrada;?>">
                     </div>
                   </div>
                 </div>
-
+                <div class="form-group">
+                  <label class="control-label">Foto</label>
+                  <input class="form-control" name="foto" type="file" value="<?php echo $foto;?>">
+                </div>
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label class="control-label">Foto</label>
-                      <input class="form-control" name="foto" type="file">
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
                       <label for="exampleSelect1">Categoria</label>
-                      <select class="form-control" id="exampleSelect1" name="categoria">
-                        
+                      <select class="form-control" id="exampleSelect1" name="categoria" value="<?php echo $categoria;?>">
                         <?php
-                          $query = $mysqli -> query ("SELECT * FROM Categoria WHERE idCategoria='6'");
+                          $query = $mysqli -> query ("SELECT * FROM Categoria WHERE idCategoria='7'");
                           while ($valores = mysqli_fetch_array($query)) {
                           echo '<option value="'.$valores[idCategoria].'">'.$valores[nombreCategoria].'</option>';
                           }
@@ -169,22 +180,22 @@
                   <div class="row">
                     <div class="col-md-6">
                       <label class="control-label">Latitud</label>
-                      <input class="form-control" name="latitud" type="text" placeholder="Ingrese la Latitud" id="txtLat">
+                      <input class="form-control" name="latitud" type="text" placeholder="Ingrese la Latitud" id="txtLat" value="<?php echo $latitud; ?>">
                     </div>
                     <div class="col-md-6">
                       <label class="control-label">Logitud</label>
-                      <input class="form-control" name="longitud" type="text" placeholder="Ingrese la Logitud" id="txtLng">
+                      <input class="form-control" name="longitud" type="text" placeholder="Ingrese la Logitud" id="txtLng" value="<?php echo $longitud; ?>">
                     </div>
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="exampleTextarea">Reseña Historica</label>
-                  <textarea class="form-control" id="exampleTextarea" rows="5" name="reseña"></textarea>
+                  <textarea class="form-control" id="exampleTextarea" rows="5" name="reseña"><?php echo $reseña;?></textarea>
                 </div>
                 <div class="form-group">
                 </div>
                 <div class="tile-footer" align=center>
-                  <button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i>Agregar</button>&nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" href="data-table-Museo.php"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cancelar</a>
+                  <button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i>Guardar</button>&nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" href="data-table-Restaurante.php"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cancelar</a>
                 </div>
               </form>
             </div>
@@ -212,7 +223,6 @@
       	ga('send', 'pageview');
       }
     </script>
-    <!-- mapas recuperacion de datos-->
     <script type="text/javascript" src=https://maps.googleapis.com/maps/api/js?key=AIzaSyCP3eTt6XMGq757Iu0ZBK-eEeEAEQZRGJ4&callback=initMap&libraries=&v=weekly></script>
     <script>
         var vMarker

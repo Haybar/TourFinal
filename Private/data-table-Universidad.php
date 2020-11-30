@@ -128,7 +128,7 @@
                             <td>
                               <div class="row">
                                 <div class="col-md-3">
-                                  <form action="LugaresEditarForm.php" method="POST">
+                                  <form action="UniversidadEditarForm.php" method="POST">
                                   <input type="hidden" name="idlugar" value="<?php echo $row['idLugar']; ?>"></input>
                                   <button type="submit" class="btn btn-success btn btn-sm" id="Modificar"><i class="fa fa-pencil-square-o"></i></button>
                                   </form>

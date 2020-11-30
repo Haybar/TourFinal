@@ -21,13 +21,13 @@
 
           <?php 
           include("config.php");
-          $idusuario=$_POST['idusuario'];
-          $nombres=$_POST['nombres'];
-          $primerApellido=$_POST['primerApellido'];
-          $segundoApellido=$_POST['segundoApellido'];
-          $email=$_POST['email'];
-          $tipo=$_POST['tipo'];
-          $foto=$_POST['foto'];
+          $idusuario=$_REQUEST['idusuario'];
+          $nombres=$_REQUEST['nombres'];
+          $primerApellido=$_REQUEST['primerApellido'];
+          $segundoApellido=$_REQUEST['segundoApellido'];
+          $email=$_REQUEST['email'];
+          $tipo=$_REQUEST['tipo'];
+          $foto=$_REQUEST['foto'];
 
           $sql="UPDATE Usuario SET nombres='$nombres', primerApellido='$primerApellido', segundoApellido='$segundoApellido', email='$email', tipo='$tipo', foto='$foto' WHERE idUsuario='$idusuario';";
 

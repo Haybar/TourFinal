@@ -19,14 +19,14 @@
             {
               echo '<script>';
                 echo 'alert("Cambios Guardados con exito!!");';
-                echo 'window.location.href="data-table-Parques.php";';
+                echo 'window.location.href="data-table-Restaurante.php";';
               echo '</script>';
             }
             else
               {
               echo '<script>';
                 echo 'alert("No se pudo guardar los cambios!!");';
-                echo 'window.location.href="data-table-Parques.php";';
+                echo 'window.location.href="data-table-Restaurante.php";';
               echo '</script>';
             }
           ?>

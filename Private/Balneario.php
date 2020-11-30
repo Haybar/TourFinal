@@ -107,7 +107,7 @@
         <div class="col-md-8">
           <div class="tile">
             <div class="tile-body">
-              <form class="for-balneario" action="registrarLugarbd.php" method="POST">
+              <form class="for-balneario" action="registrarBalneariobd.php" method="POST">
                 <div class="form-group">
                   <label class="control-label">Nombre del Balneario</label>
                   <input class="form-control" name="nombreLugar" type="text" placeholder="Ingrese el nombre del Lugar">
@@ -183,7 +183,7 @@
                 <div class="form-group">
                 </div>
                 <div class="tile-footer" align=center>
-                  <button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i>Agregar</button>&nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" href="#"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cancelar</a>
+                  <button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i>Agregar</button>&nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" href="data-table-Balneario.php"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cancelar</a>
                 </div>
               </form>
             </div>

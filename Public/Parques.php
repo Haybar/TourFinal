@@ -63,7 +63,7 @@
                     </ul>
                 </li>
                 <li><a href="IUsuario.php">Ajustes<span></span></a></li>
-                <li><a href="#">Bienvenido</a></li>
+                <li><a href="../logout.php">Salir</a></li>
             </ul>
             <!-- 
             <div class="header-right">
@@ -110,7 +110,7 @@
                                     <input type="hidden" name="idlugar" value="<?php echo $row['idLugar']; ?>"></input>
                                     <button type="submit" class="btn btn-success btn btn-sm" id="Ver">Saber más</button>
                                 </form>
-                        </div>
+                            </div>
                         </div>
                     </div>
                 <?php } ?>

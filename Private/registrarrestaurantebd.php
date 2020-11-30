@@ -20,13 +20,14 @@
               //echo "Registrado";
               echo '<script>';
                 echo 'alert("Registrado con exito!!");';
-                echo 'window.location.href="home.html";';
+                echo 'window.location.href="data-table-Restaurante.php";';
               echo '</script>';
             }
             else
               {
               echo '<script>';
                 echo 'alert("NO Registrado!!");';
+                echo 'window.location.href="data-table-Restaurante.php";';
               echo '</script>';
             }
           ?>
