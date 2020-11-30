@@ -120,7 +120,7 @@
                     ?>
                           <tr>
                             <td><?php echo $indice; ?></td>
-                            <td><?php echo $row['foto']; ?></td>
+                            <td><img src="Upload/<?php echo $row['foto']; ?>" style="width: 100px"></td>
                             <td><?php echo $row['nombreLugar']; ?></td>
                             <td><?php echo $row['descripcion']; ?></td>
                             <td><?php echo $row['direccion']; ?></td>

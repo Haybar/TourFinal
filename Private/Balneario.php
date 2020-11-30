@@ -107,7 +107,7 @@
         <div class="col-md-8">
           <div class="tile">
             <div class="tile-body">
-              <form class="for-balneario" action="registrarBalneariobd.php" method="POST">
+              <form class="for-balneario" action="registrarBalneariobd.php" method="POST"  enctype="multipart/form-data">
                 <div class="form-group">
                   <label class="control-label">Nombre del Balneario</label>
                   <input class="form-control" name="nombreLugar" type="text" placeholder="Ingrese el nombre del Lugar">

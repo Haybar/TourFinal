@@ -1,18 +1,22 @@
           <?php 
           include("config.php");
-          $idlugar=$_POST['idlugar'];
-          $nombreLugar=$_POST['nombreLugar'];
-          $descripcion=$_POST['descripcion'];
-          $direccion=$_POST['direccion'];
-          $horarioAtencion=$_POST['horarioAtencion'];
-          $entrada=$_POST['entrada'];
-          $foto=$_POST['foto'];
-          $categoria=$_POST['categoria'];
-          $latitud=$_POST['latitud'];
-          $longitud=$_POST['longitud'];
-          $reseña=$_POST['reseña'];
+          $idlugar=$_REQUEST['idlugar'];
+          $nombreLugar=$_REQUEST['nombreLugar'];
+          $descripcion=$_REQUEST['descripcion'];
+          $direccion=$_REQUEST['direccion'];
+          $horarioAtencion=$_REQUEST['horarioAtencion'];
+          $entrada=$_REQUEST['entrada'];
+          $subirFoto=$_FILES['foto'];
+          if ($subirFoto) {
+            $nombreFoto=$subirFoto['name'];
+            move_uploaded_file($subirFoto['tmp_name'], 'Upload/'.$nombreFoto);
+          }
+          $categoria=$_REQUEST['categoria'];
+          $latitud=$_REQUEST['latitud'];
+          $longitud=$_REQUEST['longitud'];
+          $reseña=$_REQUEST['reseña'];
 
-          $sql="UPDATE Lugar SET nombreLugar='$nombreLugar', descripcion='$descripcion', direccion='$direccion', horarioAtencion='$horarioAtencion', entrada='$entrada', foto='$foto', Categoria_idCategoria='$categoria', latitud='$latitud', longitud='$longitud', reseña='$reseña' WHERE idLugar='$idlugar';";
+          $sql="UPDATE Lugar SET nombreLugar='$nombreLugar', descripcion='$descripcion', direccion='$direccion', horarioAtencion='$horarioAtencion', entrada='$entrada', foto='$nombreFoto', Categoria_idCategoria='$categoria', latitud='$latitud', longitud='$longitud', reseña='$reseña' WHERE idLugar='$idlugar';";
 
 
           if($mysqli->query($sql))

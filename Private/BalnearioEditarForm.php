@@ -121,7 +121,7 @@
                   }
                 }
               ?>
-              <form class="for-balneario" action="modificarBalneariobd.php" method="POST">
+              <form class="for-balneario" action="modificarBalneariobd.php" method="POST"  enctype="multipart/form-data">
                 <input type="hidden" name="idlugar" class="form-control" value="<?php echo $idlugar; ?>"></input>
                 <div class="form-group">
                   <label class="control-label">Nombre del Lugar</label>
