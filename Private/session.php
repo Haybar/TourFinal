@@ -4,7 +4,7 @@ if (!isset($_SESSION['id'])){
 header('location:index.html');
 }
 $idusuario = $_SESSION['id'];
-$sql="SELECT * FROM usuarios WHERE idUsuario = '$idusuario';";
+$sql="SELECT * FROM Usuario WHERE idUsuario = '$idusuario';";
 $execonsulta=$mysqli->query($sql);
 $row=mysqli_fetch_array($execonsulta);
 //$username = $row['apellidoPaterno']." ".$row['apellidoMaterno']." ".$row['nombres'];

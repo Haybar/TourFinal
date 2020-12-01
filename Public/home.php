@@ -1,4 +1,5 @@
 <?php include('../config.php'); ?>
+<?php include('../session.php'); ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -27,10 +28,7 @@
 
 </head>
 <body>
-	<?php 
-		session_start();
-		$idUsuario=$_SESSION['idUsuario'];
-	?>
+	
 	<!-- Page Preloder -->
 	<div id="preloder">
 		<div class="loader"></div>
@@ -59,8 +57,13 @@
 						<li><a href="galeria.html">Instituciones</a></li>
 					</ul>
 				</li>
-				<li><a href="IUsuario.php">Ajustes<span></span></a></li>
-				<li><a href="#">Bienvenido</a></li>
+				<li><a href="#">Ajustes</a>	
+					<ul class="sub-menu">
+						<li><a href="IUsuario.php">Cuenta</a></li>
+						<li><a href="../logout.php">Cerrar Sesión</a></li>
+						
+					</ul>
+				</li>
 			</ul>
 			<!-- 
 			<div class="header-right">
@@ -119,7 +122,7 @@
 			<a href="index.html" class="footer-logo">
 				<img src="img/logoBC.png" alt="">
 			</a>
-			<h1> Bienvenido: <?php echo $idUsuario;?></h1>
+			<h1> Bienvenido: <?php echo $row['nombres'];?></h1>
 			<!-- 
 			<div class="row">
 				<div class="col-lg-3 col-sm-6">

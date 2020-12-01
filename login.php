@@ -1,7 +1,7 @@
 <?php
 include'config.php';
 if (isset($_POST["ingresar"])) {
-    session_start();
+    
     $Email=$_POST['Email'];
     $Password=$_POST['Password'];
         
@@ -11,7 +11,8 @@ if (isset($_POST["ingresar"])) {
         
         if($row)
         {   
-            $_SESSION['idUsuario']=$row['idUsuario'];
+            session_start();
+            $_SESSION['id']=$row['idUsuario'];
             if ($row['tipo'] == 'turista') {
                 echo '<script>';
                     echo 'alert("Bienvenido!!");';

@@ -21,11 +21,11 @@
 
           <?php 
           include("config.php");
-          $nombres=$_POST['nombres'];
-          $apellidoPaterno=$_POST['apellidoPaterno'];
-          $apellidoMaterno=$_POST['apellidoMaterno'];
-          $email=$_POST['email'];
-          $password=$_POST['password'];
+          $nombres=$_REQUEST['nombres'];
+          $apellidoPaterno=$_REQUEST['apellidoPaterno'];
+          $apellidoMaterno=$_REQUEST['apellidoMaterno'];
+          $email=$_REQUEST['email'];
+          $password=$_REQUEST['password'];
           
           //$sql= "INSERT INTO 'Usuario' SET nombres='$nombres', primerApellido='$apellidoPaterno', segundoApellido='$apellidoMaterno', email='$email', password='$password';";
           $sql = "INSERT INTO Usuario (nombres, primerApellido, segundoApellido, email, password) VALUES ('$nombres', '$apellidoPaterno', '$apellidoMaterno', '$email', '$password');";

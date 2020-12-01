@@ -105,7 +105,7 @@
                   }
                 }
               ?>
-              <form class="for-balneario" action="modificarUsuariobd.php" method="POST">
+              <form class="for-balneario" action="modificarUsuariobd.php" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="idusuario" class="form-control" value="<?php echo $idusuario; ?>"></input>
                 <div class="row">
                   <div class="col-md-6">
@@ -117,7 +117,7 @@
                   <div class="col-md-6">
                     <div class="form-group">
                       <label class="control-label">Foto</label>
-                      <input class="form-control" name="foto" type="file" value="<?php echo $foto;?>">
+                      <input class="form-control" name="foto" type="file">
                     </div>
                   </div>
                 </div>

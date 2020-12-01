@@ -102,9 +102,9 @@
                 ?>
                     <div class="col-lg-4 col-md-6 col-sm-12">
                         <div class="card">
-                            <img class="card-img-top" src="<?php echo $row[1]; ?>" alt="Card image cap">
+                            <img class="card-img-top" src="../Private/Upload/<?php echo $row['foto']; ?>" alt="Card image cap">
                             <div class="card-body">
-                                <h5 class="card-title"><a href="#"><?php echo $row[2]; ?></a></h5>
+                                <h5 class="card-title"><?php echo $row[2]; ?></h5>
                                 <p class="card-text"><?php echo $row[3]; ?></p>
                                 <form action="InfoParque.php" method="POST">
                                     <input type="hidden" name="idlugar" value="<?php echo $row['idLugar']; ?>"></input>

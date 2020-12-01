@@ -109,7 +109,7 @@
                     ?>
                           <tr>
                             <td><?php echo $indice; ?></td>
-                            <td><?php echo $row['foto']; ?></td>
+                            <td><img src="Upload/<?php echo $row['foto']; ?>" style="width: 100px"></td>
                             <td><?php echo $row['primerApellido'],' ',$row['segundoApellido'],' ',$row['nombres']; ?></td>
                             <td><?php echo $row['email']; ?></td>
                             <td><?php echo md5($row['password']);?></td>

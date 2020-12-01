@@ -46,7 +46,7 @@
         </a>
         <nav class="header-nav">
             <ul class="main-menu">
-                <li><a href="index.html">Inicio</a></li>
+                <li><a href="home.php">Inicio</a></li>
                 <li><a href="index.html">Acerca de nosotros</a></li>
                 <li><a href="#"  class="active">Lugares</a> 
                     <ul class="sub-menu">
@@ -74,7 +74,7 @@
         </nav>
     </header>
             <?php
-                $idlugar=$_POST['idlugar'];
+                $idlugar=$_REQUEST['idlugar'];
 
                 $sql="SELECT * FROM Lugar WHERE idLugar='$idlugar';";
                 $execonsulta=$mysqli->query($sql);
@@ -111,7 +111,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-5">
-                    <img src="img/about-img.jpg" alt="">
+                    <img src="../Private/Upload/<?php echo $foto; ?>" style="width: 100%">
                 </div>
                 <div class="col-lg-7">
                     <div class="about-text">

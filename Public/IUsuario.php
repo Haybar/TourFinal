@@ -1,6 +1,5 @@
-<?php include("config.php"); 
-session_start();
-?>
+<?php include("../config.php");?>
+<?php include('../session.php'); ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -47,7 +46,7 @@ session_start();
 		</a>
 		<nav class="header-nav">
 			<ul class="main-menu">
-				<li><a href="index.html" class="active">Inicio</a></li>
+				<li><a href="home.php" class="active">Inicio</a></li>
 				<li><a href="index.html">Acerca de nosotros</a></li>
 				<li><a href="#">Lugares</a>	
 					<ul class="sub-menu">
@@ -85,14 +84,14 @@ session_start();
 	<section class="help-section-text spad">
 		<div class="container">
 			<div class="text-center text-white mb-5 pb-4">
-				<h2>Bienvenido <?php echo $_SESSION['nombres'];?></h2>
+				<h2>Bienvenido <?php echo $row['nombres'];?></h2>
 			</div>
 			<div class="row">
 				<div class="col-md-12">
   					<nav class="nav-Admin">
   						<ul class="menu-Admin">
-        					<li><a href="configuracionUsuario.php">Ajustes</a></li>
-        					<li><a href="logout.php">Salir</a></li>
+        					<li><a href="#"><?php echo $row['primerApellido'],' ',$row['segundoApellido'],' ',$row['nombres']; ?></a></li>
+        					<li><a href="../logout.php">Salir</a></li>
       					</ul>
   					</nav>
     			</div>
