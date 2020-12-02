@@ -1,5 +1,5 @@
 <?php include('../config.php'); ?>
-<?php include('../session.php'); ?>
+<?php include('session.php'); ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -60,7 +60,7 @@
 				<li><a href="#">Ajustes</a>	
 					<ul class="sub-menu">
 						<li><a href="IUsuario.php">Cuenta</a></li>
-						<li><a href="../logout.php">Cerrar Sesión</a></li>
+						<li><a href="logout.php">Cerrar Sesión</a></li>
 						
 					</ul>
 				</li>

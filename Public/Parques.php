@@ -1,4 +1,5 @@
 <?php include('../config.php'); ?>
+<?php include('session.php'); ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -41,12 +42,12 @@
 
     <!-- Header Section -->
     <header class="header-section">
-        <a href="index.html" class="site-logo">
+        <a href="home.php" class="site-logo">
             <img src="img/logoBC.png" alt="">
         </a>
         <nav class="header-nav">
             <ul class="main-menu">
-                <li><a href="index.html">Inicio</a></li>
+                <li><a href="home.php">Inicio</a></li>
                 <li><a href="index.html">Acerca de nosotros</a></li>
                 <li><a href="#"  class="active">Lugares</a> 
                     <ul class="sub-menu">
@@ -144,6 +145,7 @@
             <a href="index.html" class="footer-logo">
                 <img src="img/logoBC.png" alt="">
             </a>
+            <h3> Bienvenido: <?php echo ($_SESSION['id']);?></h3>
             <div class="social-links">
                 <a href="#"><i class="fab fa-facebook-f"></i></a>
                 <a href="#"><i class="fab fa-instagram"></i></a>
