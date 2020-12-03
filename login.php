@@ -25,7 +25,7 @@ if (isset($_POST["ingresar"])) {
                 {
                     echo '<script>';
                         echo 'alert("Bienvenido!!");';
-                        echo 'window.location.href="Private/home.html";';
+                        echo 'window.location.href="Private/home.php";';
                     echo '</script>';
                 } 
             }                         

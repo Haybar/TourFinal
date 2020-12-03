@@ -1,12 +1,19 @@
 <?php
 session_start();
 if (!isset($_SESSION['id'])){
-header('location:index.html');
+header('location:home.php');
 }
-$idusuario = $_SESSION['id'];
-$sql="SELECT * FROM Usuario WHERE idUsuario = '$idusuario';";
-$execonsulta=$mysqli->query($sql);
-$row=mysqli_fetch_array($execonsulta);
+else
+{
+	if (isset($_SESSION['id'])) {
+		$idUsuario = $_SESSION['id'];
+		$sql="SELECT * FROM Usuario WHERE idUsuario = '$idUsuario';";
+		$execonsulta=$mysqli->query($sql);
+		$row=mysqli_fetch_array($execonsulta);
+		$_SESSION['nombres']=$row['nombres'];
+		$_SESSION['tipo']=$row['tipo'];
+	}
+}
 //$username = $row['apellidoPaterno']." ".$row['apellidoMaterno']." ".$row['nombres'];
 //$session_query = $conn->query("SELECT * FROM usuarios WHERE idUsuario = '$session_id'");
 //$user_row = $session_query->fetch();
