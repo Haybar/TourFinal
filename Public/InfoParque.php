@@ -24,10 +24,56 @@
     <link rel="stylesheet" href="css/flaticon.css"/>
     <link rel="stylesheet" href="css/slicknav.min.css"/>
     <link href='css/fontawesome-stars.css' rel='stylesheet' type='text/css'>
+    <link href="star/style.css" type="text/css" rel="stylesheet" />
     <!-- Main Stylesheets -->
     <link rel="stylesheet" href="css/style.css"/>
 
+    <!--====== Javascripts & Jquery ======-->
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 
+
+    <script src="js/jquery-3.0.0.js" type="text/javascript"></script>
+    <script src="js/jquery.barrating.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function() {
+            $('.rating').barrating({
+                theme: 'fontawesome-stars',
+                onSelect: function(value, text, event) {
+
+                    // Get element id by data-id attribute
+                    var el = this;
+                    var el_id = el.$elem.data('id');
+
+                    // rating was selected by a user
+                    if (typeof(event) !== 'undefined') {
+                        
+                        var split_id = el_id.split("_");
+
+                        var postid = split_id[1];  // postid
+
+                        // AJAX Request
+                        $.ajax({
+                            url: 'rating_ajax.php',
+                            type: 'POST',
+                            data: {postid:postid,rating:value},
+                            dataType: 'json',
+                            success: function(data){
+                                // Update average
+                                var average = Math.round(data['averageRating']);
+                               //var average = data['averageRating'];
+                                console.log('average : ' + average);
+                                $('#avgratingtxt_'+postid).text(average);
+                                $('#avgrating_'+postid).barrating('clear');
+                                $('#avgrating_'+postid).barrating('set',average);
+                            }
+                        });
+                    }
+                }
+            });
+        });
+      
+    </script>
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -63,8 +109,13 @@
                         <li><a href="galeria.html">Instituciones</a></li>
                     </ul>
                 </li>
-                <li><a href="IUsuario.php">Ajustes<span></span></a></li>
-                <li><a href="#">Bienvenido</a></li>
+                <li><a href="#">Ajustes</a> 
+                    <ul class="sub-menu">
+                        <li><a href="IUsuario.php">Cuenta</a></li>
+                        <li><a href="logout.php">Cerrar Sesión</a></li>
+                        
+                    </ul>
+                </li>
             </ul>
             <!-- 
             <div class="header-right">
@@ -125,6 +176,7 @@
                         <h5><?php echo $longitud; ?></h5>
                         <h5><?php echo $reseña; ?></h5>
                     </div>
+
                     <div class="content">
                     <?php
                         $userid=$_SESSION['id'];
@@ -141,7 +193,7 @@
                             }
 
                     // get average
-                            $query = "SELECT ROUND(AVG(rating),1) as averageRating FROM Valoracion WHERE lugar_valoracion='$postid'";
+                            $query = "SELECT ROUND(AVG(rating),0) as averageRating FROM Valoracion WHERE lugar_valoracion='$postid'";
                             $avgresult = $mysqli->query($query) or die(mysqli_error());
                             $fetchAverage = mysqli_fetch_array($avgresult);
                             $averageRating = $fetchAverage['averageRating'];
@@ -160,31 +212,36 @@
                                     <option value="4" >4</option>
                                     <option value="5" >5</option>
                                 </select>
-                            <div style='clear: both;'></div>
-                            <span id='avgrating_<?php echo $postid; ?>'><?php echo $averageRating; ?></span>
+                                <div style='clear: both;'></div>
+                                <span id='avgratingtxt_<?php echo $postid; ?>'><?php echo $averageRating; ?></span>
+                                <select class='rating' id='avgrating_<?php echo $postid; ?>' data-id='avgrating_<?php echo $postid; ?>'>
+                                    <option value="1" >1</option>
+                                    <option value="2" >2</option>
+                                    <option value="3" >3</option>
+                                    <option value="4" >4</option>
+                                    <option value="5" >5</option>
+                                </select>
 
                             <!-- Set rating -->
                             <script type='text/javascript'>
                             $(document).ready(function(){
-                                $('#rating_<?php echo $postid; ?>').barrating('set',<?php echo ($averageRating);?>);
-                            });
-                            
-                            </script>
 
-                            <!-- Set rating -->
-                            <script type='text/javascript'>
-                            $(document).ready(function(){
-                                $('#rating_<?php echo $postid; ?>').barrating('set',<?php echo ($rating);?>);
+                                $('#rating_<?php echo $postid; ?>').barrating('set',<?php echo $rating;?>);
+      
+                                $('#avgrating_<?php echo $postid; ?>').barrating('set',<?php echo $averageRating; ?>);
+                                
+                                $('#avgrating_<?php echo $postid; ?>').barrating('readonly',true);
+                                $('#avgrating_<?php echo $postid; ?>').barrating('theme', 'fontawesome-stars-o');
                             });
                             
                             </script>
+                            </div>
                         </div>
-                    </div>
             <?php
                 }
             ?>
 
-        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -213,49 +270,10 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     </footer>
     <!-- Footer Section end -->
     
-    <!--====== Javascripts & Jquery ======-->
-    <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.slicknav.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/jquery-ui.min.js"></script>
     <script src="js/main.js"></script>
-    <script src="js/jquery-3.0.0.js" type="text/javascript"></script>
-    <script src="js/jquery.barrating.min.js" type="text/javascript"></script>
-    <script type="text/javascript">
-        $(function() {
-            $('.rating').barrating({
-                theme: 'fontawesome-stars',
-                onSelect: function(value, text, event) {
-
-                    // Get element id by data-id attribute
-                    var el = this;
-                    var el_id = el.$elem.data('id');
-
-                    // rating was selected by a user
-                    if (typeof(event) !== 'undefined') {
-                        
-                        var split_id = el_id.split("_");
-
-                        var postid = split_id[1];  // postid
-
-                        // AJAX Request
-                        $.ajax({
-                            url: 'rating_ajax.php',
-                            type: 'POST',
-                            data: {postid:postid,rating:value},
-                            dataType: 'json',
-                            success: function(data){
-                                // Update average
-                                var average = data['averageRating'];
-                                $('#avgrating_'+postid).text(average);
-                            }
-                        });
-                    }
-                }
-            });
-        });
-      
-    </script>
+    
     </body>
 </html>

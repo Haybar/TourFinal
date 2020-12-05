@@ -34,3 +34,4 @@ $averageRating = $fetchAverage['averageRating'];
 $return_arr = array("averageRating"=>$averageRating);
 
 echo json_encode($return_arr);
+?>
