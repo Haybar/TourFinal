@@ -117,7 +117,7 @@
                   <div class="col-md-6">
                     <div class="form-group">
                       <label class="control-label">Foto</label>
-                      <input class="form-control" name="foto" type="file">
+                      <input class="form-control" name="fotoUsuario" type="file">
                     </div>
                   </div>
                 </div>

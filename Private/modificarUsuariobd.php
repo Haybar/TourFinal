@@ -27,13 +27,13 @@
           $segundoApellido=$_REQUEST['segundoApellido'];
           $email=$_REQUEST['email'];
           $tipo=$_REQUEST['tipo'];
-          $subirFoto=$_FILES['foto'];
+          $subirFoto=$_FILES['fotoUsuario'];
           if ($subirFoto) {
             $nombreFoto=$subirFoto['name'];
             move_uploaded_file($subirFoto['tmp_name'], 'Upload/'.$nombreFoto);
           }
 
-          $sql="UPDATE Usuario SET nombres='$nombres', primerApellido='$primerApellido', segundoApellido='$segundoApellido', email='$email', tipo='$tipo', foto='$nombreFoto' WHERE idUsuario='$idusuario';";
+          $sql="UPDATE Usuario SET nombres='$nombres', primerApellido='$primerApellido', segundoApellido='$segundoApellido', email='$email', tipo='$tipo', fotoUsuario='$nombreFoto' WHERE idUsuario='$idusuario';";
 
 
           if($mysqli->query($sql))

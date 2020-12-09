@@ -22,7 +22,7 @@
 	<link rel="stylesheet" href="css/owl.carousel.min.css"/>
 	<link rel="stylesheet" href="css/flaticon.css"/>
 	<link rel="stylesheet" href="css/slicknav.min.css"/>
-
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<!-- Main Stylesheets -->
 	<link rel="stylesheet" href="css/style.css"/>
 
@@ -36,7 +36,7 @@
 
 	<!-- Header Section -->
 	<header class="header-section">
-		<a href="index.html" class="site-logo">
+		<a href="home.php" class="site-logo">
 			<img src="img/logoBC.png" alt="">
 		</a>
 		<nav class="header-nav">
@@ -78,36 +78,46 @@
 
 	<!-- Hero Section end -->
 	<section class="hero-section">
-		<!--
+		
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-6">
+				<!--<div class="col-lg-6">
 					<div class="hs-text">
 						<h1>Inicia tu aventura</h1>
 						<p>Recorre la ciudad mas bella de Bolivia de la manera mas sencilla y comoda</p>
 						<a href="#" class="site-btn sb-dark">Find out more</a>
 					</div>
-				</div>				
-				<div class="col-lg-6">
+				</div>-->
+				<!--<script type="text/javascript">
+					$("#categoria").on('input', function () {
+   						var val=$('#categoria').val();
+   						var ejemplo = $('#categoria').find('option[value="'+val+'"]').data('ejemplo');
+   						return ejemplo;
+					});		
+				</script>-->
+					
+				<div class="col-lg-12 col-md-5 col-xs-12 col-sm-12">
 					<div class="container-form">
-						<form class="llajta-form" method="POST" action="login.php">
-							<img src="img/logoBC.png" class="logo" alt="">
-							<input type="usuario" name="Login" placeholder="&#xf2bd; Usuario">
-          					<input type="password" name="Password" placeholder="&#xf023; Contraseña">
-          					<input type="submit" class="btn" name="ingresar" value="&#xf090; Ingresar">
-          					<h5>¿Olvido su contraseña? &nbsp;<a class="link" href="registrarUsuario.php">&nbsp;Click Aqui&nbsp;</a></h5>
-          					<?php ?>
-          				</form>
-          				<form class="llajta-form-reg" method="POST" action="registrarUsuario.php">
-          					<input type="submit" class="btn" name="registrarse" value="&#xf064; Registrarse">
-          					<button type="button" class="btn btn-outline-light"><i class="fab fa-google"></i>&nbsp;Gmail</button>
-          					<button type="button" class="btn btn-outline-light"><i class="fab fa-facebook-f"></i>&nbsp;Facebook</button>
-						</form>
+						<form method="POST" action="buscar.php">
+							<div class="form-group">
+                      			<label for="exampleSelect1" style="color: white"><h3>Categoria</h3></label>
+                      			<br>
+                      			<select class="form-control" id="exampleSelect1" name="categoria">                        
+                        		<?php
+                          		$query = $mysqli -> query ("SELECT * FROM Categoria");
+                          		while ($valores = mysqli_fetch_array($query)) {
+                          		echo '<option value="'.$valores[idCategoria].'">'.$valores[nombreCategoria].'</option>';
+                          		}
+                        		?>
+                     			 </select>
+                      			<br>
+                      			<button type="submit" class="btn btn-primary" name="buscar" style="width: 100%">Buscar</button>
+                    		</div>
+                    	</form>
 					</div>
 				</div>				 
 			</div>
 		</div>
-		-->
 		<div class="hero-slider owl-carousel">
 			<div class="hs-item set-bg" data-setbg="img/hero-slider/cochabamba.jpg"></div>
 			<div class="hs-item set-bg" data-setbg="img/hero-slider/alalay1.jpg"></div>

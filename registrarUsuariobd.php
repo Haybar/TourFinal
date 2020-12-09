@@ -34,7 +34,7 @@
             {
               echo '<script>';
                 echo 'alert("Registrado con exito!!");';
-                echo 'window.location.href="Public/index.html";';
+                echo 'window.location.href="Public/home.php";';
               echo '</script>';
             }
             else

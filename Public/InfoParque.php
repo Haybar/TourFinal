@@ -205,22 +205,30 @@
                         <div class="post">
                             <div class="post-action">
                             <!-- Rating -->
-                                <select class='rating' id='rating_<?php echo $postid; ?>' data-id='rating_<?php echo $postid; ?>'>
-                                    <option value="1" >1</option>
-                                    <option value="2" >2</option>
-                                    <option value="3" >3</option>
-                                    <option value="4" >4</option>
-                                    <option value="5" >5</option>
-                                </select>
-                                <div style='clear: both;'></div>
-                                <span id='avgratingtxt_<?php echo $postid; ?>'><?php echo $averageRating; ?></span>
-                                <select class='rating' id='avgrating_<?php echo $postid; ?>' data-id='avgrating_<?php echo $postid; ?>'>
-                                    <option value="1" >1</option>
-                                    <option value="2" >2</option>
-                                    <option value="3" >3</option>
-                                    <option value="4" >4</option>
-                                    <option value="5" >5</option>
-                                </select>
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <select class='rating' id='rating_<?php echo $postid; ?>' data-id='rating_<?php echo $postid; ?>'>
+                                            <option value="1" >1</option>
+                                            <option value="2" >2</option>
+                                            <option value="3" >3</option>
+                                            <option value="4" >4</option>
+                                            <option value="5" >5</option>
+                                        </select>
+                                    </div>                                    
+                                    <div class="col-sm-6">
+                                        <h4>Calificación Global: <?php echo $averageRating; ?></h4>                                
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <select class='rating' id='avgrating_<?php echo $postid; ?>' data-id='avgrating_<?php echo $postid; ?>'>
+                                            <option value="1" >1</option>
+                                            <option value="2" >2</option>
+                                            <option value="3" >3</option>
+                                            <option value="4" >4</option>
+                                            <option value="5" >5</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
 
                             <!-- Set rating -->
                             <script type='text/javascript'>
@@ -242,8 +250,22 @@
             ?>
 
                     </div>
+            <?php
+                $sql1="INSERT INTO Comentario (contenido, usuario_comentario, idlugarComentario) VALUES ('$content', '$userid', '$idLugar')";
+            ?>
+                    <form method="POST">
+                        <div class="form-group" style="width: 100%;">
+                            <div class="col-lg-12">
+                                <input type="hidden" name="idlugar" value="<?php echo $postid; ?>"></input>
+                                <textarea name="comentario" class="form-control" rows="4" cols="50" placeholder="Deja tus comentarios aquí" style="background-color: white;"></textarea>
+                                <br>
+                                <button class="btn btn-success" type="submit" name="publicar"><i class="icon-share"></i>Publicar</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
+            <?php include('cajaComentarios.php') ?>
         </div>
     </section>
 
