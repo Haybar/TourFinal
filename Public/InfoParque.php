@@ -250,9 +250,7 @@
             ?>
 
                     </div>
-            <?php
-                $sql1="INSERT INTO Comentario (contenido, usuario_comentario, idlugarComentario) VALUES ('$content', '$userid', '$idLugar')";
-            ?>
+            
                     <form method="POST">
                         <div class="form-group" style="width: 100%;">
                             <div class="col-lg-12">

@@ -752,7 +752,11 @@ Hero section
 	box-shadow: 0px 0px 5px -1px rgba(0, 0, 0, 0.37);
 }
 .room-midle {
-    padding: 1em;
+    padding: 2em;
+}
+.room-right {
+    text-align: right;
+    padding: 3em 2em;
 }
 /*.hero-form:hover{
 	box-shadow: 0px 0px 60px #ffffff;
@@ -827,6 +831,10 @@ color: #85C1E9;
 .container-form button[type="button"]:hover{
 	background: #27F4FE;
 }
+.mapa {
+  	top: 30px;
+}
+
 
 /* ----------------
 CTA section

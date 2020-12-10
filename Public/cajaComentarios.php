@@ -7,9 +7,11 @@
                                 <!--/stories-->
                         <div class="card-body" style="border-color: blue; max-height: 100%">
                 <?php
+                $idlugar=$_REQUEST['idlugar'];
                 $sql = "SELECT * FROM Comentario 
                 INNER JOIN Usuario ON Usuario.idUsuario = Comentario.usuario_comentario 
                 INNER JOIN Lugar ON Comentario.idlugarComentario=Lugar.idLugar
+                WHERE idLugar=$idlugar
                 ORDER BY idComentario DESC";
                 $execonsulta=$mysqli->query($sql);
                 while($row = mysqli_fetch_array($execonsulta)){

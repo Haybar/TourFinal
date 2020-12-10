@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="css/style.css"/>
     <style type="text/css">
       #mapa {
-            height: 350px;
+            height: 600px;
             width: 100%;
       }
     </style> 
@@ -37,7 +37,8 @@
     <![endif]-->
 
 </head>
-<body>
+<body> 
+<main>
     <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
@@ -69,17 +70,9 @@
                 <li><a href="IUsuario.php">Ajustes<span></span></a></li>
                 <li><a href="../logout.php">Salir</a></li>
             </ul>
-            <!-- 
-            <div class="header-right">
-                <a href="#" class="hr-btn"><i class="flaticon-029-telephone-1"></i>Emergencia</a>
-                <div class="hr-btn hr-btn-2">+45 332 65767 42</div>
-            </div>
-            -->
         </nav>
     </header>
-
     <!-- Header Section end -->
-
 
     <!-- Page top Section end -->
     <section class="page-top-section set-bg" data-setbg="img/page-top-bg/ciudad.jpg">
@@ -116,31 +109,33 @@
         </div>
     </section>
     <!-- Page top Section end -->
-
+    
     <!-- Galery Container -->
 
+    <section>
     <div class="rooms">
-        <div id="mapa"></div>
-    <div class="container">
+        <div class="container">
+            
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-6">
                 <div class="room-bottom">
                     <h3>Lista de Lugares</h3>
-                    <?php $sql = "SELECT idLugar,foto,nombreLugar,descripcion,direccion,horarioAtencion FROM `Lugar` WHERE Categoria_idCategoria='5' AND estado='1';";
+                    <?php 
+                    $sql = "SELECT idLugar,foto,nombreLugar,descripcion,direccion,horarioAtencion FROM `Lugar` WHERE Categoria_idCategoria='5' AND estado='1';";
                     $execonsulta=$mysqli->query($sql);
                     while( $row=mysqli_fetch_array($execonsulta) ) {
                     ?>
                     <div class="rom-btm">
                         <div class="row">
-                            <div class="col-md-3 room-left wow fadeInLeft animated" data-wow-delay=".5s">
+                            <div class="col-md-4 room-left wow fadeInLeft animated" data-wow-delay=".5s">
                                 <img class="card-img-top" src="../Private/Upload/<?php echo $row['foto']; ?>" alt="Card image cap" style="width: 100%; height: 150px">
                             </div>
-                            <div class="col-md-6 room-midle wow fadeInUp animated" data-wow-delay=".5s">
+                            <div class="col-md-8 room-midle wow fadeInUp animated" data-wow-delay=".5s">
                                 <h4><?php echo $row[2]; ?></h4>
-                                <p><b>Features</b><?php echo $row[3]; ?></p>
+                                <p><?php echo $row[3]; ?></p>
                                 <form action="InfoParque.php" method="POST">
                                     <input type="hidden" name="idlugar" value="<?php echo $row['idLugar']; ?>"></input>
-                                    <button type="submit" class="btn btn-success btn btn-sm" id="Ver">Saber más</button>
+                                    <button type="submit" class="btn btn-success btn btn-sm" id="Ver">Ver más</button>
                                 </form>
                             </div>
 
@@ -151,28 +146,18 @@
                     <?php }?>
                 </div>
             </div>
+            <br>
+            <br>
+            <div class="col-lg-6">
+                <div class="mapa position-sticky" id="mapa"></div>
+            </div>
         </div>
-    </div>
+        </div>
     </div>
         <br>
-    <!-- Galery Container end -->
-
-   
-
-    <!-- Score Section end -->
-    <section class="score-section text-white set-bg" data-setbg="img/score-bg.jpg">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-6 col-lg-8">
-                    <h2>Obten nuestra App</h2>
-                    <h4>Mira las novedades que tenemos en nuestra app</h4>
-                    <a href="#" class="site-btn sb-big">Descargar</a>
-                </div>
-            </div>
-            <img src="img/app1.png" alt="" class="hand-img">
-        </div>
     </section>
-    <!-- Score Section end -->
+    
+    <!-- Galery Container end -->
 
     <!-- Footer Section -->
     <footer class="footer-section">
@@ -195,6 +180,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></div>
         </div>
     </footer>
+</main>
     <!-- Footer Section end -->
     
     <!--====== Javascripts & Jquery ======-->
@@ -208,7 +194,9 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script async defer type="text/javascript" src=https://maps.googleapis.com/maps/api/js?key=AIzaSyCP3eTt6XMGq757Iu0ZBK-eEeEAEQZRGJ4&callback=initMap&libraries=&v=weekly></script>
-
+    <script >
+        
+    </script>
     <script>
         $(function () {
         initMap();
